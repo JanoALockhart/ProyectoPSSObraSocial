@@ -15,7 +15,7 @@
         </div>
 
         <div class="p-3">
-            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+            <a href="{{ route('empleados.index') }}" class="flex flex-col items-center">
                 <x-navbarIcons.employee/>
                 <h2>Empleados</h2>
             </a>

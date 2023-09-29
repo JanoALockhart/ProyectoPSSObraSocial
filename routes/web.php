@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\AdminEmpleadoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');
+    Route::get('/empleados', [AdminEmpleadoController::class, 'index'])->name('empleados.index');
 });
 
 require __DIR__.'/auth.php';
