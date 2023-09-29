@@ -29,7 +29,7 @@
         </div>
 
         <div class="p-3">
-            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+            <a href="{{ route('plans.index') }}" class="flex flex-col items-center">
                 <x-navbarIcons.planes/>
                 <h2>Planes</h2>
             </a>
