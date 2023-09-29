@@ -5,9 +5,9 @@
                 <x-navbarIcons.home/>
                 <h2>Home</h2>
             </a>
-        </div class="p-3">
+        </div>
         
-        <div>
+        <div class="p-3">
             <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
                 <x-navbarIcons.clients/>
                 <h2>Clientes</h2>
