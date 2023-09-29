@@ -1,0 +1,53 @@
+<nav class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 p-3">
+    <div class="flex justify-around">
+        <div class="p-3">
+            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+                <x-navbarIcons.home/>
+                <h2>Home</h2>
+            </a>
+        </div class="p-3">
+        
+        <div>
+            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+                <x-navbarIcons.clients/>
+                <h2>Clientes</h2>
+            </a>
+        </div>
+
+        <div class="p-3">
+            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+                <x-navbarIcons.employee/>
+                <h2>Empleados</h2>
+            </a>
+        </div>
+
+        <div class="p-3">
+            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+                <x-navbarIcons.solicitud/>
+                <h2>Solicitudes</h2>
+            </a>
+        </div>
+
+        <div class="p-3">
+            <a href="{{ route('plans.index') }}" class="flex flex-col items-center">
+                <x-navbarIcons.planes/>
+                <h2>Planes</h2>
+            </a>
+        </div>
+
+        <div class="p-3">
+            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+                <x-navbarIcons.perfil/>
+                <h2>Perfil</h2>
+            </a>
+        </div>
+
+        <div class="p-3">
+            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+                <x-navbarIcons.cerrarSesion/>
+                <h2>Cerrar Sesión</h2>
+            </a>
+        </div>
+
+    </div>
+</nav>
