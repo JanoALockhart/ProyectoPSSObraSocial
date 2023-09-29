@@ -17,25 +17,56 @@
         @csrf
         @method('patch')
 
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input
-            id="name"
-            name="name"
-            type="text"
-            class="mt-1 block w-full"
-            :value="old('name', $user->name)"
-            required
-            autofocus
-            autocomplete="name"
-            :readonly="$canEditName ? null : 'readonly'"
-        />
-        
+        <!-- No editable fields -->
 
-     
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />     
+        <div>
+            <x-input-label for="DNI" :value="__('DNI')" />
+            <x-text-input 
+                id="DNI" 
+                name="DNI" 
+                type="text" 
+                class="mt-1 block w-full" 
+                :value="$user->DNI"
+                readonly
+                style="{{'background-color: #f1f1f1; border: 1px solid #ccc; color: #666;' }}"    
+            />
+            <x-input-error class="mt-2" :messages="$errors->get('DNI')" />
         </div>
 
+        <div>
+            <x-input-label for="name" :value="__('First Name')" />
+            <x-text-input
+                id="name"
+                name="name"
+                type="text"
+                class="mt-1 block w-full"
+                :value="old('name', $user->firstName)"
+                required
+                autofocus
+                autocomplete="name"
+                readonly
+                style="{{'background-color: #f1f1f1; border: 1px solid #ccc; color: #666;' }}"
+            />
+            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+
+
+        <div>
+            <x-input-label for="lastName" :value="__('Last Name')" />
+            <x-text-input 
+                id="lastName" 
+                name="lastName" 
+                type="text" 
+                class="mt-1 block w-full" 
+                :value="$user->lastName"
+                readonly
+                style="{{'background-color: #f1f1f1; border: 1px solid #ccc; color: #666;' }}"    
+            />
+            <x-input-error class="mt-2" :messages="$errors->get('lastName')" />
+        </div>
+
+        <!-- Editable fields -->
+        
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
@@ -45,7 +76,6 @@
                 <div>
                     <p class="text-sm mt-2 text-gray-800 dark:text-gray-200">
                         {{ __('Your email address is unverified.') }}
-
                         <button form="send-verification" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
                             {{ __('Click here to re-send the verification email.') }}
                         </button>
@@ -58,6 +88,19 @@
                     @endif
                 </div>
             @endif
+        </div>
+        
+        
+        <div>
+            <x-input-label for="phone" :value="__('Phone')" />
+            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="old('phone', $user->phone)" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+        </div>
+
+        <div>
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" :value="old('address', $user->address)" />
+            <x-input-error class="mt-2" :messages="$errors->get('address')" />
         </div>
 
         <div class="flex items-center gap-4">
