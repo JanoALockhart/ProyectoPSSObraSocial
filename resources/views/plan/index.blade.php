@@ -15,9 +15,12 @@
                     <button id="btnAgregarPlan" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Agregar Plan</button>
                 </div>
 
-                <!-- Barra de búsqueda -->
-                <div class="mb-4">
-                    <input type="text" id="txtBusqueda" class="form-input w-full" placeholder="Buscar Plan">
+                <!-- Barra de búsqueda con botón de búsqueda -->
+                <div class="mb-4 flex">
+                    <input type="text" id="txtBusqueda" class="form-input w-full rounded-full px-4 py-2" placeholder="Buscar Plan">
+                    <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 ml-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">
+                        Buscar
+                    </button>
                 </div>
 
                 <!-- Lista de elementos -->
