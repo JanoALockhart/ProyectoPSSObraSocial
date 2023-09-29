@@ -15,7 +15,7 @@
         </div>
 
         <div class="p-3">
-            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+            <a href="{{ route('login') }}" class="flex flex-col items-center">
                 <x-navbarIcons.perfil/>
                 <h2>Iniciar Sesión</h2>
             </a>

@@ -29,7 +29,7 @@
         </div>
 
         <div class="p-3">
-            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+            <a href="{{ route('logout') }}" class="flex flex-col items-center">
                 <x-navbarIcons.cerrarSesion/>
                 <h2>Cerrar Sesión</h2>
             </a>
