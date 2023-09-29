@@ -12,7 +12,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-700">
                 <!-- Formulario para agregar un nuevo plan -->
                 <div class="mb-4">
-                    <button id="btnAgregarPlan" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Agregar Empleado</button>
+                    <a href="empleados/create" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Agregar empleado</a>
                 </div>
 
                 <!-- Barra de búsqueda -->

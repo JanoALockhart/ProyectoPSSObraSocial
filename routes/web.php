@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');
     Route::get('/empleados', [AdminEmpleadoController::class, 'index'])->name('empleados.index');
+    Route::get('/empleados/create', [AdminEmpleadoController::class, 'create'])->name('empleados.create');
 });
 
 require __DIR__.'/auth.php';

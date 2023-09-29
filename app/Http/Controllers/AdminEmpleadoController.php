@@ -13,4 +13,10 @@ class AdminEmpleadoController extends Controller
         return view('empleado.index');
     }
 
+    public function create()
+    {
+        return view('empleado.create');
+    }
+
+
 };
