@@ -1,24 +1,19 @@
 <nav class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 p-3">
-    <div class="flex">
-        <div class="grow flex items-start p-3">
-            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+    <div class="flex justify-between">
+        <div>
+            <x-navbarButton title="Home" route="{{ route('dashboard') }}" class="justify-self-start">
                 <x-navbarIcons.home/>
-                <h2>Home</h2>
-            </a>
+            </x-navbarButton>
         </div>
-
-        <div class="p-3">
-            <a href="{{ route('dashboard') }}" class="flex flex-col items-center">
+        <div class="flex">
+            <x-navbarButton title="Registrarse" route="{{ route('dashboard') }}">
                 <x-navbarIcons.register/>
-                <h2>Registrarse</h2>
-            </a>
-        </div>
+            </x-navbarButton>
 
-        <div class="p-3">
-            <a href="{{ route('login') }}" class="flex flex-col items-center">
+            <x-navbarButton title="Iniciar Sesion" route="{{ route('dashboard') }}">
                 <x-navbarIcons.perfil/>
-                <h2>Iniciar Sesión</h2>
-            </a>
+            </x-navbarButton>
         </div>
+        
     </div>
 </nav>
