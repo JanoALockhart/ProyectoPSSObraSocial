@@ -34,16 +34,21 @@ Route::middleware('auth')->group(function () {
 
 
 
-
-    Route::get('/client', function () {
+    Route::get('/clientHome', function () {
         return view('cliente.home');
-    })->name('client');
+    })->name('clientHome');
+    Route::get('/solicitudes', function () {
+        return view('cliente.solicitudes');
+    })->name('solicitudes');
     Route::get('/solicitudReintegro', function(){
         return view('cliente.solicitudReintegro');
     })->name('solicitudReintegro');
     Route::get('/solicitudPrestaciones', function(){
         return view('cliente.solicitudPrestaciones');
     })->name('solicitudPrestaciones');
+    Route::get('/cupon', function () {
+        return view('cliente.cupon');
+    })->name('cupon');
 
 });
 
