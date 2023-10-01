@@ -31,6 +31,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');
     Route::get('/empleados', [AdminEmpleadoController::class, 'index'])->name('empleados.index');
     Route::get('/empleados/create', [AdminEmpleadoController::class, 'create'])->name('empleados.create');
+
+
+
+
+    Route::get('/client', function () {
+        return view('cliente.home');
+    })->name('client');
+    Route::get('/solicitudReintegro', function(){
+        return view('cliente.solicitudReintegro');
+    })->name('solicitudReintegro');
+    Route::get('/solicitudPrestaciones', function(){
+        return view('cliente.solicitudPrestaciones');
+    })->name('solicitudPrestaciones');
+
 });
 
 require __DIR__.'/auth.php';
