@@ -47,7 +47,7 @@
           
         </div>
 
-        <a href="empleados" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out"> Volver </a>
+        <a href="/empleados" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out"> Volver </a>
 
 </div>
 </x-app-layout>
