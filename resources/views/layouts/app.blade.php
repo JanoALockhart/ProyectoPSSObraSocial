@@ -16,7 +16,10 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('navbars.unregisteredClientNavbar')
+            @if(isset($navbar))
+                {{ $navbar }}
+            @endif
+            <!-- @include('navbars.unregisteredClientNavbar') -->
 
             <!-- Page Heading -->
             @if (isset($header))
