@@ -1,4 +1,8 @@
 <x-app-layout>
+    <x-slot name="navbar">
+        @include('navbars.adminNavbar')
+    </x-slot>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center justify-center">
             {{ __('Agregar Empleado') }}

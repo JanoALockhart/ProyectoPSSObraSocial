@@ -29,8 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');
-    Route::get('/empleados', [AdminEmpleadoController::class, 'index'])->name('empleados.index');
-    Route::get('/empleados/create', [AdminEmpleadoController::class, 'create'])->name('empleados.create');
+    Route::get('/empleados', [AdminEmpleadoController::class, 'index'])->name('admin.adminEmpleado.index');
+    Route::get('/empleados/details', [AdminEmpleadoController::class, 'details'])->name('admin.adminEmpleado.details');
+    Route::get('/empleados/create', [AdminEmpleadoController::class, 'create'])->name('admin.adminEmpleado');
 
 
 

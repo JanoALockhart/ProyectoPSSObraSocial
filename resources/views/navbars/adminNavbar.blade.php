@@ -9,7 +9,7 @@
             <x-navbarIcons.clients/>
         </x-navbarButton>
 
-        <x-navbarButton title="Empleados" route="{{ route('empleados.index') }}">
+        <x-navbarButton title="Empleados" route="{{ route('admin.adminEmpleado.index') }}">
             <x-navbarIcons.employee/>
         </x-navbarButton>
 

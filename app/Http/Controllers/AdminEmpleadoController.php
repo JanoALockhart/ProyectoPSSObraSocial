@@ -10,12 +10,17 @@ class AdminEmpleadoController extends Controller
     public function index()
     {
         $empleados = Employee::all(); // Obtener todos los planes
-        return view('empleado.index');
+        return view('admin.adminEmpleado.index');
     }
 
     public function create()
     {
-        return view('empleado.create');
+        return view('admin.adminEmpleado.create');
+    }
+
+    public function details()
+    {
+        return view('admin.adminEmpleado.details');
     }
 
 

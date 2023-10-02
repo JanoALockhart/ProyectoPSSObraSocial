@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="navbar">
-        @include('navbars.employeeNavbar')
+        @include('navbars.adminNavbar')
     </x-slot>
 
     <x-slot name="header">
@@ -30,7 +30,7 @@
                     <li class="list-group-item flex justify-between items-center mt-2 mb-2">
                         <span class="flex-grow font-semibold">Nombre del Empleado1</span>
                         <span>
-                            <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Ver información</button>
+                            <a href="empleados/details" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Ver información</a>
                             <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Modificar</button>
                             <button class="btn btn-danger border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Dar de Baja</button>
                         </span>
@@ -45,7 +45,7 @@
                     <li class="list-group-item flex justify-between items-center mt-2 mb-2">
                         <span class="flex-grow font-semibold">Nombre del Empleado2</span>
                         <span>
-                            <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Ver información</button>
+                            <a href="empleados/details" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Ver información</a>
                             <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Modificar</button>
                             <button class="btn btn-danger border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Dar de Baja</button>
                         </span>
