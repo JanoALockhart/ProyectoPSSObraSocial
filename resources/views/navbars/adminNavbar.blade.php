@@ -5,7 +5,7 @@
             <x-navbarIcons.home/>
         </x-navbarButton>
 
-        <x-navbarButton title="Clientes" route="{{ route('dashboard') }}">
+        <x-navbarButton title="Clientes" route="{{ route('admin.adminCliente.index') }}">
             <x-navbarIcons.clients/>
         </x-navbarButton>
 

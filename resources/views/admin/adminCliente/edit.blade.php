@@ -4,17 +4,18 @@
     </x-slot>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center justify-center">
-            {{ __('Agregar Empleado') }}
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Editar cliente') }}
         </h2>
     </x-slot>
-    <div class="max-w-md mx-auto bg-white shadow-md overflow-hidden sm:rounded-lg p-6">
-        <form method="POST" action="{{ route('register') }}">
-            <div class="max-w-md mx-auto bg-white shadow-md overflow-hidden sm:rounded-lg p-6">
-            @csrf
 
-                <!-- Email Address -->
-                <div class="mt-4">
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            <!-- Contenedor del formulario y la lista de planes -->
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-700">
+               <!-- Email Address -->
+               <div class="mt-4">
                     <x-input-label for="email" :value="__('Email')" />
                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -39,16 +40,6 @@
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
 
-                <!-- Confirm Password -->
-                <div class="mt-4">
-                    <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                    <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required autocomplete="new-password" />
-
-                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-                </div>
 
                 <!-- DNI -->
                 <div class="mt-4">
@@ -100,19 +91,22 @@
                 </div>
 
                 <div>
-                    <x-input-label for="cargo" :value="__('Cargo')" />
-                    <select id="cargo" name="cargo" class="mt-1 block w-full" required>
-                        <option value="Cargo1">Cargo1</option>
-                        <option value="Cargo2">Cargo2</option>
-                        <option value="Cargo3">Cargo3</option>
+                    <x-input-label for="plan" :value="__('Plan')" />
+                    <select id="plan" name="plan" class="mt-1 block w-full" required>
+                        <option value="plan1">Oro</option>
+                        <option value="plan2">Plata</option>
+                        <option value="plan3">Bronce</option>
                     </select>
-                    <x-input-error class="mt-2" :messages="$errors->get('cargo')" />
+                    <x-input-error class="mt-2" :messages="$errors->get('plan')" />
                 </div>
 
-            </div>
-    </form>
-    <a href="/empleados" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out"> Volver </a>
-    <a href="/empleados" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out"> Guardar </a>
+               
 
-</div>
+            </div>
+            <a href="/admin/clientes" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out"> Volver </a>
+            <a href="/admin/clientes" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out"> Guardar </a>
+
+        </div>
+        
+    </div>
 </x-app-layout>

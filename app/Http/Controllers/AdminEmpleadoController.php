@@ -23,5 +23,10 @@ class AdminEmpleadoController extends Controller
         return view('admin.adminEmpleado.details');
     }
 
+    public function edit()
+    {
+        return view('admin.adminEmpleado.edit');
+    }
+
 
 };
