@@ -17,18 +17,18 @@ class ClientSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+        // $faker = Faker::create();
 
-        $userDNIs = User::pluck('DNI')->toArray();
+        // $userDNIs = User::pluck('DNI')->toArray();
 
-        foreach (range(1, 10) as $index) {
-            $randomDNI = $faker->unique()->randomElement($userDNIs);
+        // foreach (range(1, 10) as $index) {
+        //     $randomDNI = $faker->unique()->randomElement($userDNIs);
 
-            Client::create([
-                'DNI' => $randomDNI,
-                'registration_date' => $faker->date,
-                'plan' => $faker->randomElement(['Bronce', 'Plata', 'Oro']),
-            ])->assignRole('client');
-        }
+        //     Client::create([
+        //         'DNI' => $randomDNI,
+        //         'registration_date' => $faker->date,
+        //         'plan' => $faker->randomElement(['Bronce', 'Plata', 'Oro']),
+        //     ])->assignRole('client');
+        // }
     }
 }

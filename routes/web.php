@@ -50,6 +50,14 @@ Route::middleware('auth')->group(function () {
         return view('cliente.cupon');
     })->name('cupon');
 
+    Route::get('/adminHome', function () {
+        return view('admin.home');
+    })->name('adminHome');
+
+    Route::get('/employeeHome', function () {
+        return view('empleado.home');
+    })->name('employeeHome');
+
 });
 
 require __DIR__.'/auth.php';

@@ -10,7 +10,7 @@
         </x-navbarButton>
 
         <x-navbarButton title="Solicitudes" route="{{ route('dashboard') }}">
-            <x-navbarIcons.solicitudes/>
+            <x-navbarIcons.solicitud/>
         </x-navbarButton>
 
         <x-navbarButton title="Perfil" route="{{ route('dashboard') }}">

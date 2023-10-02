@@ -45,7 +45,7 @@ class AuthenticatedSessionController extends Controller
                 $viewName = "employeeHome";
                 break;
 
-            default: break;
+            default:;break;
         }
       
         return redirect()->intended($viewName);
