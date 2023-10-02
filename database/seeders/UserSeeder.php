@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
                 'state' => $faker->boolean,
                 'email' => $faker->unique()->safeEmail,
                 'email_verified_at' => now(),
-                'password' => Hash::make('password'), // Puedes ajustar la contraseña según sea necesario
+                'password' => Hash::make('password'),
                 'remember_token' => Str::random(10),
             ]);
         }

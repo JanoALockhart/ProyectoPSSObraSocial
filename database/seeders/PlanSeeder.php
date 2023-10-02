@@ -22,7 +22,5 @@ class PlanSeeder extends Seeder
             'max_age' => 7,
             'state' => 0,
         ]);
-
-        // Agrega más planes si es necesario
     }
 }

@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'address' => $request->address,
             'state' => true
-        ]);
+        ])->assignRole('client');
 
         event(new Registered($user));
 
@@ -61,7 +61,9 @@ class RegisteredUserController extends Controller
             'DNI' => $user->DNI,
             'registration_date' => now(),
             'plan' => $request->plan
-        ])->assignRole('client');
+        ]);
+
+        event(new Registered($client));
 
         Auth::login($user);
 

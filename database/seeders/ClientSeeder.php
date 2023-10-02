@@ -19,7 +19,6 @@ class ClientSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        // Obtener los DNIs de los usuarios creados
         $userDNIs = User::pluck('DNI')->toArray();
 
         foreach (range(1, 10) as $index) {

@@ -29,7 +29,26 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $role = $request->user()->getRoleNames()->first();
+        
+        $viewName = null;
+
+        switch($role)
+        {
+            case "client": 
+                $viewName = "clientHome";
+                break;
+            case "admin": 
+                $viewName = "adminHome";
+                break;    
+            case "employee": 
+                $viewName = "employeeHome";
+                break;
+
+            default: break;
+        }
+      
+        return redirect()->intended($viewName);
     }
 
     /**
