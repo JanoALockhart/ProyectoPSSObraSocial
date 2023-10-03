@@ -39,8 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/clientes/details', [AdminClienteController::class, 'details'])->name('admin.adminCliente.details');
     Route::get('/admin/clientes/edit', [AdminClienteController::class, 'edit'])->name('admin.adminCliente.edit');
 
-
-
     Route::get('/clientHome', function () {
         return view('cliente.home');
     })->name('clientHome');
@@ -65,6 +63,23 @@ Route::middleware('auth')->group(function () {
         return view('empleado.home');
     })->name('employeeHome');
 
+    Route::get('/employeeProfile', function () {
+        return view('empleado.perfil');
+    })->name('employeeProfile');
+
+
+    Route::get('/empleado_solicitudes', function () {
+        return view('empleado.solicitudes');
+    })->name('empleado.solicitudes');
+    Route::get('/empleado_solicitudReintegro', function(){
+        return view('empleado.solicitudReintegro');
+    })->name('empleado.solicitudReintegro');
+    Route::get('/empleado_solicitudPrestaciones', function(){
+        return view('empleado.solicitudPrestaciones');
+    })->name('empleado.solicitudPrestaciones');
 });
+
+
+
 
 require __DIR__.'/auth.php';

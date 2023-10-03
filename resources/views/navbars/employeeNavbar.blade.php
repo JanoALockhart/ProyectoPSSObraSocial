@@ -9,11 +9,11 @@
             <x-navbarIcons.clients/>
         </x-navbarButton>
 
-        <x-navbarButton title="Solicitudes" route="{{ route('dashboard') }}">
+        <x-navbarButton title="Solicitudes" route="{{ route('empleado.solicitudes') }}">
             <x-navbarIcons.solicitud/>
         </x-navbarButton>
 
-        <x-navbarButton title="Perfil" route="{{ route('dashboard') }}">
+        <x-navbarButton title="Perfil" route="{{ route('employeeProfile') }}">
             <x-navbarIcons.perfil/>
         </x-navbarButton>
 
