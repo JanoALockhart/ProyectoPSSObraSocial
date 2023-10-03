@@ -44,9 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/clientHome', function () {
         return view('cliente.home');
     })->name('clientHome');
-    Route::get('/solicitudes', function () {
+    Route::get('/solicitudesCliente', function () {
         return view('cliente.solicitudes');
-    })->name('solicitudes');
+    })->name('solicitudesCliente');
     Route::get('/solicitudReintegro', function(){
         return view('cliente.solicitudReintegro');
     })->name('solicitudReintegro');
@@ -59,6 +59,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/nuevaSolicitud', function () {
         return view('cliente.nuevaSolicitud');
     })->name('nuevaSolicitud');
+    Route::get('/clientProfile', function () {
+        return view('cliente.perfil');
+    })->name('clientProfile');
+    Route::get('/modifyClientProfile', function () {
+        return view('cliente.modificarPerfil');
+    })->name('modifyClientProfile');
 
     Route::get('/adminHome', function () {
         return view('admin.home');
