@@ -63,6 +63,10 @@ Route::middleware('auth')->group(function () {
         return view('empleado.home');
     })->name('employeeHome');
 
+    Route::get('/employeeProfile', function () {
+        return view('empleado.perfil');
+    })->name('employeeProfile');
+
 
     Route::get('/empleado_solicitudes', function () {
         return view('empleado.solicitudes');
