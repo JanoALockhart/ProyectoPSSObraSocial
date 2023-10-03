@@ -59,6 +59,10 @@ Route::middleware('auth')->group(function () {
         return view('empleado.home');
     })->name('employeeHome');
 
+    Route::get('/employeeProfile', function () {
+        return view('empleado.perfil');
+    })->name('employeeProfile');
+
 });
 
 require __DIR__.'/auth.php';
