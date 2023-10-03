@@ -5,7 +5,7 @@
 
     <div class="flex flex-col">
         <button class="w-64 bg-blue-500 hover:bg-blue-700 text-white p-3 m-2 rounded self-center">
-            <a class="">Nueva Solicitud</a>
+            <a href="{{ route('nuevaSolicitud') }}" class="">Nueva Solicitud</a>
         </button>
         <div class="grid grid-cols-2 gap-4">
             <div class=" m-4 p-4 bg-white">
