@@ -2,7 +2,7 @@
     <form id="logout-form" action="{{ route('logout') }}" method="POST">
         @csrf
 
-        <a href="{{ route('dashboard') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"  class="flex flex-col items-center">
+        <a href="{{ route('deslogueado.home') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"  class="flex flex-col items-center">
             <x-navbarIcons.cerrarSesion/>
             <h2>Cerrar Sesión</h2>
         </a>
