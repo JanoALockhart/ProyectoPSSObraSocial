@@ -39,6 +39,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/clientes/details', [AdminClienteController::class, 'details'])->name('admin.adminCliente.details');
     Route::get('/admin/clientes/edit', [AdminClienteController::class, 'edit'])->name('admin.adminCliente.edit');
 
+    Route::get('/admin/solicitudes', function () {
+        return view('admin.solicitudes');
+    })->name('admin.solicitudes');
+
+    Route::get('admin/solicitudReintegro', function(){
+        return view('admin.solicitudReintegro');
+    })->name('admin.solicitudReintegro');
+    Route::get('admin/solicitudPrestaciones', function(){
+        return view('admin.solicitudPrestaciones');
+    })->name('admin.solicitudPrestaciones');
+
     Route::get('/clientHome', function () {
         return view('cliente.home');
     })->name('clientHome');
@@ -86,6 +97,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/empleado_solicitudPrestaciones', function(){
         return view('empleado.solicitudPrestaciones');
     })->name('empleado.solicitudPrestaciones');
+
+    Route::get('/empleado_paginaCliente-Empleados', function(){
+        return view('empleado.paginaCliente-Empleados');
+    })->name('empleado.paginaCliente-Empleados');
 });
 
 
