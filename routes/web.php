@@ -56,6 +56,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/cupon', function () {
         return view('cliente.cupon');
     })->name('cupon');
+    Route::get('/nuevaSolicitud', function () {
+        return view('cliente.nuevaSolicitud');
+    })->name('nuevaSolicitud');
 
     Route::get('/adminHome', function () {
         return view('admin.home');
