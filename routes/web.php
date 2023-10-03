@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('desloguado.home');
+})->name('deslogueado.home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,12 +39,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/clientes/details', [AdminClienteController::class, 'details'])->name('admin.adminCliente.details');
     Route::get('/admin/clientes/edit', [AdminClienteController::class, 'edit'])->name('admin.adminCliente.edit');
 
+    Route::get('/admin/solicitudes', function () {
+        return view('admin.solicitudes');
+    })->name('admin.solicitudes');
+
+    Route::get('admin/solicitudReintegro', function(){
+        return view('admin.solicitudReintegro');
+    })->name('admin.solicitudReintegro');
+    Route::get('admin/solicitudPrestaciones', function(){
+        return view('admin.solicitudPrestaciones');
+    })->name('admin.solicitudPrestaciones');
+
     Route::get('/clientHome', function () {
         return view('cliente.home');
     })->name('clientHome');
-    Route::get('/solicitudes', function () {
+    Route::get('/solicitudesCliente', function () {
         return view('cliente.solicitudes');
-    })->name('solicitudes');
+    })->name('solicitudesCliente');
     Route::get('/solicitudReintegro', function(){
         return view('cliente.solicitudReintegro');
     })->name('solicitudReintegro');
@@ -54,6 +65,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/cupon', function () {
         return view('cliente.cupon');
     })->name('cupon');
+    Route::get('/nuevaSolicitud', function () {
+        return view('cliente.nuevaSolicitud');
+    })->name('nuevaSolicitud');
+    Route::get('/clientProfile', function () {
+        return view('cliente.perfil');
+    })->name('clientProfile');
+    Route::get('/modifyClientProfile', function () {
+        return view('cliente.modificarPerfil');
+    })->name('modifyClientProfile');
 
     Route::get('/adminHome', function () {
         return view('admin.home');
@@ -77,6 +97,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/empleado_solicitudPrestaciones', function(){
         return view('empleado.solicitudPrestaciones');
     })->name('empleado.solicitudPrestaciones');
+
+    Route::get('/empleado_paginaCliente-Empleados', function(){
+        return view('empleado.paginaCliente-Empleados');
+    })->name('empleado.paginaCliente-Empleados');
 });
 
 

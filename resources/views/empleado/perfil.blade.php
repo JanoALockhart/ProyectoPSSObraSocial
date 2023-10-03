@@ -1,4 +1,8 @@
 <x-app-layout>
+
+    <x-slot name="navbar">
+        @include('navbars.employeeNavbar')
+    </x-slot>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-700 leading-tight">
             {{ __('Perfil del Empleado') }}

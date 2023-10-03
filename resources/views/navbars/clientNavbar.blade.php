@@ -5,7 +5,7 @@
             <x-navbarIcons.home/>
         </x-navbarButton>
 
-        <x-navbarButton title="Solicitudes" route="{{ route('solicitudes') }}">
+        <x-navbarButton title="Solicitudes" route="{{ route('solicitudesCliente') }}">
             <x-navbarIcons.solicitud/>
         </x-navbarButton>
 
@@ -13,7 +13,7 @@
             <x-navbarIcons.cupon/>
         </x-navbarButton>
 
-        <x-navbarButton title="Perfil" route="{{ route('dashboard') }}">
+        <x-navbarButton title="Perfil" route="{{ route('clientProfile') }}">
             <x-navbarIcons.perfil/>
         </x-navbarButton>
 
