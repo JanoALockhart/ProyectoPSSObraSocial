@@ -1,6 +1,8 @@
 
 <?php
 
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\AdminEmpleadoController;
 use App\Http\Controllers\AdminClienteController;
 use Illuminate\Support\Facades\Route;
 
