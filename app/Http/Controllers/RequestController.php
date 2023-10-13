@@ -28,7 +28,6 @@ class RequestController extends Controller
      */
     public function create()
     {
-
         return view('cliente.nuevaSolicitud');
     }
 
@@ -37,7 +36,11 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         //Verificar los datos del formulario
+
+        //Almacenar el archivo del formulario
+
         //Almacenar la nueva solicitud
     }
 

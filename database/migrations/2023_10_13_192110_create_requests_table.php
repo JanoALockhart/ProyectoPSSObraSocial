@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('recipient_last_name');
             $table->string('request_image_path');
             $table->enum('state',['Pendiente','Aprobado','Desaprobado']);
+            $table->string('description');
 
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients');

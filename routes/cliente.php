@@ -10,7 +10,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/solicitudesCliente', [RequestController::class, 'indexClientRequests'])->name('solicitudesCliente');
     Route::get('/solicitudCliente/{id}',[RequestController::class, 'show'])->name('solicitud')->whereNumber('id');
     Route::get('/nuevaSolicitud', [RequestController::class, 'create'])->name('nuevaSolicitud');
-    Route::post('/solicitudes', [RequestController::class, 'store'])->name('solicitudes.create');
+    Route::post('/solicitudes', [RequestController::class, 'store'])->name('solicitudes.store');
     Route::get('/clientProfile', function () {
         return view('cliente.perfil');
     })->name('clientProfile');
