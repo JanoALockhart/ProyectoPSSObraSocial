@@ -8,10 +8,8 @@
             <div class="mb-6">
                 <label for="tipoSolicitud" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de Solicitud</label>
                 <select id="tipoSolicitud" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option>Opcion1</option>
-                    <option>Opcion2</option>
-                    <option>Opcion3</option>
-                    <option>Opcion4</option>
+                    <option>Reintegro</option>
+                    <option>Prestacion</option>
                 </select>
             </div>
 

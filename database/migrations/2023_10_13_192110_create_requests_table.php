@@ -14,13 +14,17 @@ return new class extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
             $table->enum('type',['Reintegro','Prestacion']);
+            $table->date('date');
             $table->integer('CBU');
             $table->string('recipient_name');
             $table->string('recipient_last_name');
-            $table->string('request_image');
+            $table->string('request_image_path');
             $table->enum('state',['Pendiente','Aprobado','Desaprobado']);
-            $table->timestamps();
 
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients');
+
+            $table->timestamps();
         });
     }
 
