@@ -9,8 +9,7 @@ Route::middleware('auth')->group(function () {
         return view('admin.home');
     })->name('adminHome');
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
 
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');
     Route::get('/empleados', [AdminEmpleadoController::class, 'index'])->name('admin.adminEmpleado.index');
