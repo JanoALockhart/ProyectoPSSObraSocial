@@ -36,8 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/empleados/edit', [AdminEmpleadoController::class, 'edit'])->name('admin.adminEmpleado.edit');
 
     Route::get('/admin/clientes', [AdminClienteController::class, 'index'])->name('admin.adminCliente.index');
-    Route::get('/admin/clientes/details', [AdminClienteController::class, 'details'])->name('admin.adminCliente.details');
-    Route::get('/admin/clientes/edit', [AdminClienteController::class, 'edit'])->name('admin.adminCliente.edit');
+    Route::get('/admin/clientes/details/{client}', [AdminClienteController::class, 'details'])->name('admin.adminCliente.details');
+    Route::get('/admin/clientes/edit/{client}', [AdminClienteController::class, 'edit'])->name('admin.adminCliente.edit');
+    Route::patch('/admin/clientes/update', [AdminClienteController::class, 'update'])->name('admin.adminCliente.update');
 
     Route::get('/admin/solicitudes', function () {
         return view('admin.solicitudes');
