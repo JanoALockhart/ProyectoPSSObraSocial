@@ -16,7 +16,7 @@
                         <h3 class="mx-2">ID: ---</h3>
                         <h3 class="mx-2">ESTADO: ---</h3>
                     </div>
-                    <a href="{{ route('solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
+                    <a href="{{ route('solicitud',1) }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
                 </div>
 
                 <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
@@ -24,7 +24,7 @@
                         <h3 class="mx-2">ID: ---</h3>
                         <h3 class="mx-2">ESTADO: ---</h3>
                     </div>
-                    <a href="{{ route('solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
+                    <a href="{{ route('solicitud',1) }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
                 </div>
 
                 <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
@@ -32,7 +32,7 @@
                         <h3 class="mx-2">ID: ---</h3>
                         <h3 class="mx-2">ESTADO: ---</h3>
                     </div>
-                    <a href="{{ route('solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
+                    <a href="{{ route('solicitud',1) }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
                 </div>
 
                 <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
@@ -40,7 +40,7 @@
                         <h3 class="mx-2">ID: ---</h3>
                         <h3 class="mx-2">ESTADO: ---</h3>
                     </div>
-                    <a href="{{ route('solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
+                    <a href="{{ route('solicitud',1) }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
                         <h3 class="mx-2">ID: ---</h3>
                         <h3 class="mx-2">ESTADO: ---</h3>
                     </div>
-                    <a href="{{ route('solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
+                    <a href="{{ route('solicitud',2) }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
                 </div>
 
                 <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
@@ -60,7 +60,7 @@
                         <h3 class="mx-2">ID: ---</h3>
                         <h3 class="mx-2">ESTADO: ---</h3>
                     </div>
-                    <a href="{{ route('solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
+                    <a href="{{ route('solicitud',2) }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
                 </div>
 
                 <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
@@ -68,7 +68,7 @@
                         <h3 class="mx-2">ID: ---</h3>
                         <h3 class="mx-2">ESTADO: ---</h3>
                     </div>
-                    <a href="{{ route('solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
+                    <a href="{{ route('solicitud',2) }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
                 </div>
 
                 <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
@@ -76,7 +76,7 @@
                         <h3 class="mx-2">ID: ---</h3>
                         <h3 class="mx-2">ESTADO: ---</h3>
                     </div>
-                    <a href="{{ route('solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
+                    <a href="{{ route('solicitud',2) }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
                 </div>
             </div>
         </div>
