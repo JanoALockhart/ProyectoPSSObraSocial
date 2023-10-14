@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('type',['Reintegro','Prestacion']);
             $table->date('date');
-            $table->integer('CBU');
+            $table->string('CBU');
             $table->string('recipient_name');
             $table->string('recipient_last_name');
             $table->string('request_image_path');
