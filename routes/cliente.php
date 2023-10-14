@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'checkIfClient'])->group(function () {
     Route::get('/clientHome', function () {
         return view('cliente.home');
     })->name('clientHome');

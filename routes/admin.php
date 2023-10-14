@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminEmpleadoController;
 use App\Http\Controllers\AdminClienteController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
     Route::get('/adminHome', function () {
         return view('admin.home');
     })->name('adminHome');
