@@ -17,21 +17,23 @@
 
                 <!-- Formulario para agregar un nuevo plan -->
                 <div class="mb-4">
-                    <button id="btnAgregarPlan" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Agregar Plan</button>
+                    <a href="{{ route('plans.create') }}" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Agregar Plan</a>
                 </div>
                 <div class="mb-4 flex">
-    <input type="text" id="txtBusqueda" class="form-input w-full rounded-full px-4 py-2" placeholder="Buscar Plan">
-    <button id="btnBuscar" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 ml-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">
-        Buscar
-    </button>
-</div>
+                    <input type="text" id="txtBusqueda" class="form-input w-full rounded-full px-4 py-2" placeholder="Buscar Plan">
+                    <button id="btnBuscar" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 ml-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">
+                        Buscar
+                    </button>
+                </div>
 
                 <ul id="listaPlanes" class="list-group">
                 @foreach ($planes as $plan)
                     <li class="custom-list-item mt-2 mb-2">
                         <div class="flex justify-between items-center">
                             <div>
-                                <span class="font-semibold">{{ $plan->name }}</span>
+                                <span class="font-semibold">Nombre:</span><span> {{ $plan->name }}</span></br>
+                                <span class="font-semibold">Precio por Persona: </span><span> {{ $plan->price }} $</span></br>
+                                <span class="font-semibold">Prestaciones:</span>
                                 <ul class="custom-sub-list ml-8">
                                     @if ($plan->prestations)
                                         @foreach ($plan->prestations as $prestation)
@@ -41,11 +43,14 @@
                                 </ul>
                             </div>
                             <div>
-                                <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover-text-white transition duration-300 ease-in-out">Modificar</button>
-                                <form method="POST" action="{{ route('plans.disable', $plan) }}">
+                            <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">
+                                <a href="{{ route('plans.edit', $plan) }}" style="text-decoration: none; color: inherit;">Modificar</a>
+                            </button>
+
+                                <form method="POST" action="{{ route('plans.switch', $plan) }}">
                                     @csrf
                                     @method('POST')
-                                    <button type="submit" class="btn btn-{{ $plan->state ? 'danger' : 'success' }} border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover-text-white transition duration-300 ease-in-out">
+                                    <button type="submit" class="btn btn-{{ $plan->state ? 'danger' : 'success' }} border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">
                                         {{ $plan->state ? 'Dar de Baja' : 'Dar de Alta' }}
                                     </button>
                                 </form>
@@ -53,7 +58,6 @@
                         </div>
                     </li>
                 @endforeach
-
                 </ul>
             </div>
         </div>

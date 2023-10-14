@@ -27,6 +27,7 @@ class PlanSeeder extends Seeder
             'min_age' => 1,
             'max_age' => 2,
             'state' => 1,
+            'price' => 105.6,
         ]);
         $plan1->prestations()->attach($prestation->id);
 
@@ -36,6 +37,7 @@ class PlanSeeder extends Seeder
             'min_age' => 4,
             'max_age' => 7,
             'state' => 0,
+            'price' => 1.6,
         ]);
         $plan2->prestations()->attach($prestation2->id);
     }

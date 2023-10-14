@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('min_age'); // Columna 'piso'
             $table->integer('max_age'); // Columna 'techo'
+            $table->float('price');
             $table->boolean('state')->default(true);
             $table->timestamps();
             
