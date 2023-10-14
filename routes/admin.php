@@ -14,6 +14,8 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');
+    Route::post('/plans/disable/{plan}', [PlanController::class, 'disable'])->name('plans.disable');
+
     Route::get('/empleados', [AdminEmpleadoController::class, 'index'])->name('admin.adminEmpleado.index');
     Route::get('/empleados/details', [AdminEmpleadoController::class, 'details'])->name('admin.adminEmpleado.details');
     Route::get('/empleados/create', [AdminEmpleadoController::class, 'create'])->name('admin.adminEmpleado.create');

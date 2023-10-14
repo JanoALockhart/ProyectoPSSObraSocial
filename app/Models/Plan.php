@@ -1,4 +1,5 @@
 <?php
+// app/Models/Plan.php
 
 namespace App\Models;
 
@@ -16,9 +17,9 @@ class Plan extends Model
         'state',
     ];
 
-    // Relación muchos a muchos con Prestation
+    // Relación muchos a muchos sin un modelo específico
     public function prestations()
     {
-        return $this->belongsToMany(Prestation::class);
+        return $this->belongsToMany(Prestation::class,'prestation_plan', 'prestation_id', 'plan_id')->withTimestamps();
     }
 }
