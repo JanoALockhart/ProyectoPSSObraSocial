@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
     Route::get('/employeeHome', function () {
         return view('empleado.home');
     })->name('employeeHome');
