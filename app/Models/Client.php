@@ -9,10 +9,9 @@ use Spatie\Permission\Traits\HasRoles;
 class Client extends Model
 {
     use HasFactory, HasRoles;
-    
+
     protected $guard_name = 'web';
-    
-    protected $primaryKey = 'client_id';
+
     public $incrementing = true;
 
     protected $fillable = [
@@ -24,5 +23,9 @@ class Client extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'DNI', 'DNI');
+    }
+
+    public function requests(){
+        return $this->hasMany(Request::class);
     }
 }
