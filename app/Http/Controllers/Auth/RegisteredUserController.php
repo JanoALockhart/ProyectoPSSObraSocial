@@ -57,6 +57,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        /*
         $client = Client::create([
             'DNI' => $user->DNI,
             'registration_date' => now(),
@@ -64,7 +65,7 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($client));
-
+        */
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
