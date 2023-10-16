@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ClientController;
 
-Route::get('/empleado_paginaCliente-Empleados', function(){
-    return view('empleado.paginaCliente-Empleados');
-})->name('empleado.paginaCliente-Empleados');
+Route::get('/empleado_paginaCliente-Empleados', [ClientController::class, 'index'])
+    ->name('empleado.paginaCliente-Empleados');
+
 
 Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
     Route::get('/employeeHome', function () {
