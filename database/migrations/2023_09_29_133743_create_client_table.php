@@ -22,8 +22,13 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::table('requests', function (Blueprint $table) {
+            $table->dropForeign('requests_client_id_foreign'); // Eliminar la restricción en la tabla 'requests'
+        });
+    
+        Schema::dropIfExists('clients'); // Eliminar la tabla 'clients' con CASCADE
     }
+    
 };

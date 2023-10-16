@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <x-slot name="navbar">
         @include('navbars.adminNavbar')
     </x-slot>
@@ -17,11 +16,11 @@
 
                 <!-- Formulario para agregar un nuevo plan -->
                 <div class="mb-4">
-                    <a href="{{ route('plans.create') }}" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Agregar Plan</a>
+                    <a href="{{ route('plans.create') }}" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover-text-white transition duration-300 ease-in-out">Agregar Plan</a>
                 </div>
                 <div class="mb-4 flex">
                     <input type="text" id="txtBusqueda" class="form-input w-full rounded-full px-4 py-2" placeholder="Buscar Plan">
-                    <button id="btnBuscar" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 ml-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">
+                    <button id="btnBuscar" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 ml-2 hover-bg-gray-700 hover-text-white transition duration-300 ease-in-out">
                         Buscar
                     </button>
                 </div>
@@ -43,14 +42,14 @@
                                 </ul>
                             </div>
                             <div>
-                            <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">
+                            <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover-bg-gray-700 hover-text-white transition duration-300 ease-in-out">
                                 <a href="{{ route('plans.edit', $plan) }}" style="text-decoration: none; color: inherit;">Modificar</a>
                             </button>
 
                                 <form method="POST" action="{{ route('plans.switch', $plan) }}">
                                     @csrf
                                     @method('POST')
-                                    <button type="submit" class="btn btn-{{ $plan->state ? 'danger' : 'success' }} border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">
+                                    <button type="submit" class="btn btn-{{ $plan->state ? 'danger' : 'success' }} border border-gray-700 rounded-full px-4 py-2 hover-bg-gray-700 hover-text-white transition duration-300 ease-in-out">
                                         {{ $plan->state ? 'Dar de Baja' : 'Dar de Alta' }}
                                     </button>
                                 </form>
@@ -87,8 +86,9 @@
         $('#btnBuscar').click(function () {
             var searchTerm = $('#txtBusqueda').val().toLowerCase();
 
+            // Filtra los planes por el término de búsqueda
             $('#listaPlanes .custom-list-item').each(function () {
-                var planName = $(this).find('.font-semibold').text().toLowerCase();
+                var planName = $(this).text().toLowerCase();
 
                 if (planName.includes(searchTerm)) {
                     $(this).show();
@@ -99,3 +99,4 @@
         });
     });
 </script>
+
