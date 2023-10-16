@@ -12,9 +12,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <!-- Contenedor del formulario y la lista de planes -->
+            <!-- Contenedor del formulario y la lista de empleados -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-700">
-                <!-- Formulario para agregar un nuevo plan -->
+                <!-- Formulario para agregar un nuevo empleado -->
                 <div class="mb-4">
                     <a href="empleados/create" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Agregar empleado</a>
                 </div>
@@ -24,37 +24,32 @@
                     <input type="text" id="txtBusqueda" class="form-input w-full" placeholder="Buscar Empleado">
                 </div>
 
-                <!-- Lista de elementos -->
-                <ul id="listaPlanes" class="list-group">
-                    <!-- Elemento 1 con margen superior e inferior -->
-                    <li class="list-group-item flex justify-between items-center mt-2 mb-2">
-                        <span class="flex-grow font-semibold">Nombre del Empleado1</span>
-                        <span>
-                            <a href="empleados/details" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Ver información</a>
-                            <a href="empleados/edit" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Modificar</a>
-                            <button class="btn btn-danger border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Dar de Baja</button>
+                <!-- Lista de empleados -->
+                <ul id="listaEmpleados" class="list-group">
+                    @foreach($empleados as $empleado)
+                    <li class="list-group-item flex justify-between items-center mt-2 mb-2 rounded-full px-4 py-2 @if (!$empleado->user->state) bg-gray-700 text-white rounded @endif" style="border: 1px solid @if (!$empleado->user->state) white @else white @endif;">
+                        <!-- Subítemes dentro del elemento -->
+                        <ul class="ml-8">
+                            <li>DNI: {{ $empleado->DNI }}</li>
+                            <li>Fecha de Registro: {{ $empleado->registration_date }}</li>
+                            <li>Estado: @if ($empleado->user->state) Activo @else Desactivo @endif</li>
+                            <!-- Agrega otros detalles si es necesario -->
+                        </ul>
+                        <span class="flex-grow font-semibold">{{ $empleado->user->name }}</span>
+                        <span class="flex items-center space-x-4">
+                            <a href="empleados/details" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 @if (!$empleado->user->state) border border-white @endif hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Ver información</a>
+                            <a href="empleados/edit" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 @if (!$empleado->user->state) border border-white @endif hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Modificar</a>
+                            <!-- Formulario para Dar de Baja/Alta -->
+                            <form method="POST" action="{{ route('empleados.cambiarEstado', ['empleado' => $empleado]) }}">
+                                @csrf
+                                @method('POST')
+                                <button type="submit" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 @if (!$empleado->user->state) border border-white @endif hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">
+                                    {{ $empleado->user->state ? 'Dar de Baja' : 'Dar de Alta' }}
+                                </button>
+                            </form>
                         </span>
-                    </li>
-                    <!-- Subítemes dentro del primer elemento -->
-                    <ul class="ml-8">
-                        <li>DNI</li>
-                        <li>CARGO</li>
-                    </ul>
-
-                    <!-- Elemento 2 con margen superior e inferior -->
-                    <li class="list-group-item flex justify-between items-center mt-2 mb-2">
-                        <span class="flex-grow font-semibold">Nombre del Empleado2</span>
-                        <span>
-                            <a href="empleados/details" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Ver información</a>
-                            <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Modificar</button>
-                            <button class="btn btn-danger border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Dar de Baja</button>
-                        </span>
-                    </li>
-                    <!-- Subítemes dentro del segundo elemento -->
-                    <ul class="ml-8">
-                        <li>DNI</li>
-                        <li>CARGO</li>
-                    </ul>
+                    </li>                    
+                    @endforeach
                 </ul>
             </div>
         </div>

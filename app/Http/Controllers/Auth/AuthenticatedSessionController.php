@@ -50,7 +50,7 @@ class AuthenticatedSessionController extends Controller
       
         return redirect()->intended($viewName);
     }
-
+    
     /**
      * Destroy an authenticated session.
      */

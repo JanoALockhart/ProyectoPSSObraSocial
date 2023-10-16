@@ -35,6 +35,6 @@ Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
         return view('admin.solicitudPrestaciones');
     })->name('admin.solicitudPrestaciones');
 
-
+    Route::post('/empleados/cambiarEstado/{empleado}', [AdminEmpleadoController::class, 'cambiarEstado'])->name('empleados.cambiarEstado');
 
 });
