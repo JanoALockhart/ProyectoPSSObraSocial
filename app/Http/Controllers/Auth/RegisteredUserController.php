@@ -31,6 +31,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        //dd($request);
         $request->validate([
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -57,7 +58,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        /*
+        
         $client = Client::create([
             'DNI' => $user->DNI,
             'registration_date' => now(),
@@ -65,9 +66,9 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($client));
-        */
+        
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('empleado.paginaCliente-Empleados');
     }
 }

@@ -1,12 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
+Route::get('/empleado_paginaCliente-Empleados', function(){
+    return view('empleado.paginaCliente-Empleados');
+})->name('empleado.paginaCliente-Empleados');
 
 Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
     Route::get('/employeeHome', function () {
         return view('empleado.home');
     })->name('employeeHome');
+
 
     Route::get('/employeeProfile', function () {
         return view('empleado.perfil');
@@ -23,8 +28,14 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
         return view('empleado.solicitudPrestaciones');
     })->name('empleado.solicitudPrestaciones');
 
-    Route::get('/empleado_paginaCliente-Empleados', function(){
-        return view('empleado.paginaCliente-Empleados');
-    })->name('empleado.paginaCliente-Empleados');
+    
+
+    Route::post('/register-client', [RegisteredUserController::class, 'store'])->name('register');
+
+    Route::get('/register-client', function(){
+        return view('auth.register');
+    });
+
+
 });
 
