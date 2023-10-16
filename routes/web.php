@@ -5,6 +5,7 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\AdminEmpleadoController;
 use App\Http\Controllers\AdminClienteController;
 use App\Http\Controllers\PDFController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +19,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// Podria moverse esta logica a un controller, pero anda bien.!!
 Route::get('/', function () {
-    return view('desloguado.home');
+    $user = Auth::user();
+
+    $viewName = 'desloguado.home';
+
+    if ($user) {
+
+        $role = $user->getRoleNames()->first();
+    
+        switch($role)
+        {
+            case "client": 
+                $viewName = "clientHome";
+                break;
+            case "admin": 
+                $viewName = "adminHome";
+                break;    
+            case "employee": 
+                $viewName = "employeeHome";
+                break;
+
+            default: break;
+        }
+        return redirect()->intended($viewName);
+    }
+  
+        return view($viewName);
+
 })->name('deslogueado.home');
 
 // Route::get('/dashboard', function () {

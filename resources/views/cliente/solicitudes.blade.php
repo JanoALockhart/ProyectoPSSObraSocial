@@ -4,81 +4,47 @@
     </x-slot>
 
     <div class="flex flex-col">
-        <button class="w-64 bg-blue-500 hover:bg-blue-700 text-white p-3 m-2 rounded self-center">
-            <a href="{{ route('nuevaSolicitud') }}" class="">Nueva Solicitud</a>
-        </button>
+        <a href="{{ route('nuevaSolicitud') }}" class="self-center mt-4">
+            <button type="button" class="self:center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                Nueva Solicitud
+            </button>
+        </a>
         <div class="grid grid-cols-2 gap-4">
-            <div class=" m-4 p-4 bg-white">
-                <h2 class="text-center mb-2">Solicitudes de Reintegro</h2>
-                <!-- Listado de Solicitudes. Modificar cuando se tengan datos-->
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
 
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
-
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
-
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
+            <div class="p-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <h3 class="m-3 text-center text-3xl font-bold dark:text-white">Solicitudes de Reintegro</h3>
+                <div class="px-3 max-h-80 overflow-y-auto">
+                    @foreach ($refundRequests as $refund)
+                        <div class="flex p-3 my-3 bg-blue-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <div class="grow flex items-center justify-center">
+                                <p class="m-1 text-lg text-gray-900 dark:text-white">ID: {{ $refund->id }} </p>
+                                <p class="m-1 text-lg text-gray-900 dark:text-white">ESTADO: {{ $refund->state }}</p>
+                            </div>
+                            <a href="{{ route('solicitud', $refund->id) }}"  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                Ver
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
 
-            <div class=" m-4 p-4 bg-white">
-                <h2 class="text-center mb-2">Solicitudes de Prestaciones</h2>
-                <!-- Listado de Solicitudes. Modificar cuando se tengan datos-->
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
-
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
-
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
-
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
+            <div class="p-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <h3 class="m-3 text-center text-3xl font-bold dark:text-white">Solicitudes de Prestaciones</h3>
+                <div class="px-3 max-h-80 overflow-y-auto">
+                    @foreach ($benefitRequests as $benefit)
+                        <div class="flex p-3 my-3 bg-blue-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <div class="grow flex items-center justify-center">
+                                <p class="m-1 text-lg text-gray-900 dark:text-white">ID: {{ $benefit->id }} </p>
+                                <p class="m-1 text-lg text-gray-900 dark:text-white">ESTADO: {{ $benefit->state }}</p>
+                            </div>
+                            <a href="{{ route('solicitud', $benefit->id) }}"  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                Ver
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
+
         </div>
     </div>
 </x-app-layout>
