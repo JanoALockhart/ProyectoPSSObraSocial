@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\AdminEmpleadoController;
 use App\Http\Controllers\AdminClienteController;
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
+
+Route::get('/pdf', [PDFController::class, 'getPdf']);
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
