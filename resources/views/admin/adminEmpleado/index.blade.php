@@ -12,9 +12,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <!-- Contenedor del formulario y la lista de planes -->
+            <!-- Contenedor del formulario y la lista de empleados -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-700">
-                <!-- Formulario para agregar un nuevo plan -->
+                <!-- Formulario para agregar un nuevo empleado -->
                 <div class="mb-4">
                     <a href="empleados/create" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Agregar empleado</a>
                 </div>
@@ -29,18 +29,25 @@
                     @foreach ($employees as $employee)
 
                         <li class="list-group-item flex justify-between items-center mt-2 mb-2">
+                            <ul class="ml-8">
+                                <li>DNI: {{$employee->user->DNI}}</li>
+                                <li>Fecha de Registro: {{ $employee->registration_date }}</li>
+                                <li>Estado: @if ($employee->user->state) Activo @else Inactivo @endif</li>
+                            </ul>
                             <span class="flex-grow font-semibold">{{$employee->user->firstName . ' ' . $employee->user->lastName}}</span>
                             <span>
                                 <a href="{{ route('admin.adminEmpleado.details', ['employee' => $employee->DNI]) }}" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Ver información</a>
                                 <a href="{{ route('admin.adminEmpleado.edit', ['employee' => $employee->DNI]) }}" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Modificar</a>
-                                <button class="btn btn-danger border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Dar de Baja</button>
+                                <form method="POST" action="{{ route('empleados.cambiarEstado', ['empleado' => $employee]) }}">
+                                    @csrf
+                                    @method('POST')
+                                    <br/>
+                                    <button type="submit" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 @if (!$employee->user->state) border border-white @endif hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">
+                                        {{ $employee->user->state ? 'Dar de Baja' : 'Dar de Alta' }}
+                                    </button>
+                                </form>
                             </span>
                         </li>
-
-                        <ul class="ml-8">
-                            <li>DNI: {{$employee->user->DNI}}</li>
-                        </ul>
-
                     @endforeach
                 </ul>
             </div>

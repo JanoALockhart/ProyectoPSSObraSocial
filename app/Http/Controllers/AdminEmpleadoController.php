@@ -61,5 +61,12 @@ class AdminEmpleadoController extends Controller
         return redirect()->route('admin.adminEmpleado.details', ['employee' => $employee->DNI]);
     }
 
+    public function cambiarEstado(Employee $empleado)
+    {
+        $usuario = $empleado->user;
+        $usuario->state = !$usuario->state; // Cambiar de falso a verdadero o de verdadero a falso
+        $usuario->save();
+        return redirect()->route('admin.adminEmpleado.index')->with('success');
+    }
 
 };

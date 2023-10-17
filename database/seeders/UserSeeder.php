@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
             'birthDate' => $faker->date,
             'phone' => $faker->phoneNumber,
             'address' => $faker->address,
-            'state' => $faker->boolean,
+            'state' => true,
             'email' => 'employee@ospifak.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
@@ -62,6 +62,24 @@ class UserSeeder extends Seeder
             'registration_date'=> today()
         ]);
 
+        $us = User::create([
+            'DNI' => 44444444,
+            'firstName' => $faker->firstName,
+            'lastName' => $faker->lastName,
+            'birthDate' => $faker->date,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+            'state' => false,
+            'email' => 'employee2@ospifak.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ])->assignRole('employee');
+
+        Employee::create([
+            'DNI' => 44444444,
+            'registration_date'=> today()
+        ]);
 
         //Administrator
         $us = User::create([
