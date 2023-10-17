@@ -14,6 +14,13 @@ Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
 
 
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');
+    Route::post('/plans/switch/{plan}', [PlanController::class, 'switch'])->name('plans.switch');
+    Route::get('/plans/create', [PlanController::class, 'create'])->name('plans.create');
+    Route::post('/plans', [PlanController::class, 'store'])->name('plans.store');
+    Route::get('/plans/edit/{plan}', [PlanController::class, 'edit'])->name('plans.edit');
+    Route::put('/plans/{plan}', [PlanController::class, 'update'])->name('plans.update');
+
+
     Route::get('/empleados', [AdminEmpleadoController::class, 'index'])->name('admin.adminEmpleado.index');
     Route::get('/empleados/details/{employee}', [AdminEmpleadoController::class, 'details'])->name('admin.adminEmpleado.details');
     Route::get('/empleados/create', [AdminEmpleadoController::class, 'create'])->name('admin.adminEmpleado.create');

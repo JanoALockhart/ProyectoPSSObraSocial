@@ -12,12 +12,16 @@ class CreatePrestationPlanTable extends Migration
             $table->unsignedBigInteger('prestation_id');
             $table->unsignedBigInteger('plan_id');
             $table->timestamps();
-
+    
             // Definir las claves foráneas
             $table->foreign('prestation_id')->references('id')->on('prestations');
             $table->foreign('plan_id')->references('id')->on('plans');
+    
+            // Definir un índice único en las combinaciones de claves foráneas
+            $table->unique(['prestation_id', 'plan_id']);
         });
     }
+    
 
     public function down()
     {

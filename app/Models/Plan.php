@@ -1,4 +1,5 @@
 <?php
+// app/Models/Plan.php
 
 namespace App\Models;
 
@@ -13,12 +14,13 @@ class Plan extends Model
         'name',
         'min_age',
         'max_age',
+        'price',
         'state',
     ];
 
-    // Relación muchos a muchos con Prestation
+    // Relación muchos a muchos sin un modelo específico
     public function prestations()
     {
-        return $this->belongsToMany(Prestation::class);
+        return $this->belongsToMany(Prestation::class,'prestation_plan');
     }
 }
