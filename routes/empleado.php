@@ -31,9 +31,9 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
 
     
 
-    Route::post('/register-client', [RegisteredUserController::class, 'store'])->name('register');
+    Route::post('/empleado/registrar-cliente', [RegisteredUserController::class, 'store'])->name('register');
 
-    Route::get('/register-client', function(){
+    Route::get('/empleado/registrar-cliente', function(){
         return view('auth.register');
     });
 
