@@ -6,9 +6,6 @@
             </x-navbarButton>
         </div>
         <div class="flex">
-            <x-navbarButton title="Registrarse" route="{{ route('register') }}">
-                <x-navbarIcons.register/>
-            </x-navbarButton>
 
             <x-navbarButton title="Iniciar Sesion" route="{{ route('login') }}">
                 <x-navbarIcons.perfil/>
