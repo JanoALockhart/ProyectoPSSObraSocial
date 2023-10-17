@@ -16,9 +16,11 @@ return new class extends Migration
             $table->enum('type',['Reintegro','Prestacion']);
             $table->date('date');
             $table->string('CBU');
+            $table->string('recipient_DNI');
             $table->string('recipient_name');
             $table->string('recipient_last_name');
             $table->string('request_image_path');
+            $table->decimal('amount',9,2);
             $table->enum('state',['Pendiente','Aprobado','Desaprobado']);
             $table->string('description');
 

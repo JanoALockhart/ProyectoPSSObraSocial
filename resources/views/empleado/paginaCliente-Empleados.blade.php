@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="navbar">
-        @include('navbars.clientNavbar')
+        @include('navbars.employeeNavbar')
     </x-slot>
 
     <div class="flex flex-col items-center">

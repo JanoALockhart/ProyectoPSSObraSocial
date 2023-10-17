@@ -13,9 +13,14 @@ class Request extends Model
         'type',
         'date',
         'CBU',
+        'recipient_DNI',
         'recipient_name',
         'recipient_last_name',
+        'request_image_path',
+        'amount',
         'state',
+        'description',
+        'client_id'
     ];
 
     public function client(){
