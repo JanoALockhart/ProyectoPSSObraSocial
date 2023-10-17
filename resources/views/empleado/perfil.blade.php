@@ -36,11 +36,6 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="cargo" class="form-label">Cargo Asociado</label></br>
-                        <input type="text" class="form-control" id="cargo" name="cargo" value="Vice Presidente Junior">
-                    </div>
-
-                    <div class="mb-4">
                         <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label></br>
                         <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="01/01/1980" readonly>
                     </div>

@@ -26,35 +26,22 @@
 
                 <!-- Lista de elementos -->
                 <ul id="listaPlanes" class="list-group">
-                    <!-- Elemento 1 con margen superior e inferior -->
-                    <li class="list-group-item flex justify-between items-center mt-2 mb-2">
-                        <span class="flex-grow font-semibold">Nombre del Empleado1</span>
-                        <span>
-                            <a href="empleados/details" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Ver información</a>
-                            <a href="empleados/edit" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Modificar</a>
-                            <button class="btn btn-danger border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Dar de Baja</button>
-                        </span>
-                    </li>
-                    <!-- Subítemes dentro del primer elemento -->
-                    <ul class="ml-8">
-                        <li>DNI</li>
-                        <li>CARGO</li>
-                    </ul>
+                    @foreach ($employees as $employee)
 
-                    <!-- Elemento 2 con margen superior e inferior -->
-                    <li class="list-group-item flex justify-between items-center mt-2 mb-2">
-                        <span class="flex-grow font-semibold">Nombre del Empleado2</span>
-                        <span>
-                            <a href="empleados/details" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Ver información</a>
-                            <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Modificar</button>
-                            <button class="btn btn-danger border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Dar de Baja</button>
-                        </span>
-                    </li>
-                    <!-- Subítemes dentro del segundo elemento -->
-                    <ul class="ml-8">
-                        <li>DNI</li>
-                        <li>CARGO</li>
-                    </ul>
+                        <li class="list-group-item flex justify-between items-center mt-2 mb-2">
+                            <span class="flex-grow font-semibold">{{$employee->user->firstName . ' ' . $employee->user->lastName}}</span>
+                            <span>
+                                <a href="{{ route('admin.adminEmpleado.details', ['employee' => $employee->DNI]) }}" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Ver información</a>
+                                <a href="{{ route('admin.adminEmpleado.edit', ['employee' => $employee->DNI]) }}" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Modificar</a>
+                                <button class="btn btn-danger border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Dar de Baja</button>
+                            </span>
+                        </li>
+
+                        <ul class="ml-8">
+                            <li>DNI: {{$employee->user->DNI}}</li>
+                        </ul>
+
+                    @endforeach
                 </ul>
             </div>
         </div>

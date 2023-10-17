@@ -13,41 +13,40 @@
         @csrf
 
             <div class="mt-4">
-                Nombre empleado Apellido empleado
+                <strong class="text-lg text-blue-500">Nombre:</strong> {{ $employee->user->firstName }} {{ $employee->user->lastName }}
             </div>
 
             <div class="mt-4">
-                DNI empleado
+                <strong class="text-lg text-blue-500">DNI:</strong> {{ $employee->user->DNI }}
             </div>
 
             <div class="mt-4">
-                cargo
+                <strong class="text-lg text-blue-500">Fecha de Nacimiento:</strong> {{ $employee->user->birthDate }}
             </div>
 
             <div class="mt-4">
-                fecha de nacimiento
+                <strong class="text-lg text-blue-500">Domicilio:</strong> {{ $employee->user->address }}
             </div>
 
             <div class="mt-4">
-                Lugar de nacimiento
+                <strong class="text-lg text-blue-500">Número de Teléfono:</strong> {{ $employee->user->phone }}
             </div>
 
             <div class="mt-4">
-                Domicilio
+                <strong class="text-lg text-blue-500">Email:</strong> {{ $employee->user->email }}
             </div>
 
-            <div class="mt-4">
-                Número de teléfono
-            </div>
-
-            <div class="mt-4">
-                Email
-            </div>
+            <div class="mb-4">
+                <strong class="text-lg text-blue-500">Estado:</strong> 
+                <span :class="{ 'text-green-500': $employee->user->state === 'Activo', 'text-red-500': $employee->user->state === 'Inactivo' }">
+                    {{ $employee->user->state === 'active' ? 'Activo' : 'Inactivo' }}
+                </span>
+             </div>
 
           
         </div>
 
-        <a href="/empleados" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out"> Volver </a>
+        <a href="{{ route('admin.adminEmpleado.index')}}" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out"> Volver </a>
 
 </div>
 </x-app-layout>
