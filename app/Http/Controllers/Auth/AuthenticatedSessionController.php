@@ -26,27 +26,32 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
+        if ($request->user()->state) {            
 
-        $request->session()->regenerate();
+            $request->session()->regenerate();
 
-        $role = $request->user()->getRoleNames()->first();
-        
-        $viewName = null;
+            $role = $request->user()->getRoleNames()->first();
+            
+            $viewName = null;
 
-        switch($role)
-        {
-            case "client": 
-                $viewName = "clientHome";
-                break;
-            case "admin": 
-                $viewName = "adminHome";
-                break;    
-            case "employee": 
-                $viewName = "employeeHome";
-                break;
-
-            default:break;
+            switch($role)
+            {
+                case "client": 
+                    $viewName = "clientHome";
+                    break;
+                case "admin": 
+                    $viewName = "adminHome";
+                    break;    
+                case "employee": 
+                    $viewName = "employeeHome";
+                    break;
+                default:break;
+            }
+        }else{
+            Auth::logout();
+            $viewName = "/";
         }
+        
       
         return redirect()->intended($viewName);
     }
