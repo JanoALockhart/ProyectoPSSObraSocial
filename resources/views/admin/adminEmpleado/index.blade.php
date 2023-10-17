@@ -39,7 +39,6 @@
 
                         <ul class="ml-8">
                             <li>DNI: {{$employee->user->DNI}}</li>
-                            <li>CARGO (ESTO EXISTE O ES DELIRIO?)</li>
                         </ul>
 
                     @endforeach

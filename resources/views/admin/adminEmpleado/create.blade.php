@@ -99,16 +99,6 @@
                     <x-input-error :messages="$errors->get('address')" class="mt-2" />
                 </div>
 
-                <div>
-                    <x-input-label for="cargo" :value="__('Cargo')" />
-                    <select id="cargo" name="cargo" class="mt-1 block w-full" required>
-                        <option value="Cargo1">Cargo1</option>
-                        <option value="Cargo2">Cargo2</option>
-                        <option value="Cargo3">Cargo3</option>
-                    </select>
-                    <x-input-error class="mt-2" :messages="$errors->get('cargo')" />
-                </div>
-
             </div>
     </form>
     <a href="/empleados" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out"> Volver </a>

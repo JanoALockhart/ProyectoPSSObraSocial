@@ -21,10 +21,6 @@
             </div>
 
             <div class="mt-4">
-                cargo (?????)
-            </div>
-
-            <div class="mt-4">
                 <strong class="text-lg text-blue-500">Fecha de Nacimiento:</strong> {{ $employee->user->birthDate }}
             </div>
 
