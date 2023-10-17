@@ -61,7 +61,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
-Route::get('/pdf', [PDFController::class, 'getPdf']);
+Route::get('/pdfMensual', [PDFController::class, 'getPdfMensual']);
+Route::get('/pdfAnual', [PDFController::class, 'getPdfAnual']);
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
