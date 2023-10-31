@@ -26,5 +26,8 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
     Route::get('/empleado_paginaCliente-Empleados', function(){
         return view('empleado.paginaCliente-Empleados');
     })->name('empleado.paginaCliente-Empleados');
+
+    Route::get('/empleado_solicitudes/cambioEstado/{id}/{newState}', [RequestController::class, 'requestStateChange'])->name('empleado.solicitudes.cambioEstado');
+
 });
 

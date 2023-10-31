@@ -45,19 +45,27 @@
             
             
             <div class="flex justify-end mt-4">
-                <button class="bg-green-500 hover:bg-green-700 text-white p-3 m-2 rounded">
+            <a href="{{route('empleado.solicitudes.cambioEstado',,approved)}}">
+                <button id="aprobarButton" class="bg-green-500 hover:bg-green-700 text-white p-3 m-2 rounded">
                     Aprobar Solicitud
                 </button>
+            </a>
+            <a href="{{route('empleado.solicitudes.cambioEstado',,disapproved)}}">
                 <button class="bg-red-500 hover:bg-red-700 text-white p-3 m-2 rounded">
                     Rechazar Solicitud
                 </button>
             </div>
-
+            </a>
         </div>
         <div class="">
             <img class="max-h-[calc(9*2.5rem)]" src="https://via.placeholder.com/360x480">
         </div>
 
     </div>
+
+
+    
+
+
 
 </x-app-layout>

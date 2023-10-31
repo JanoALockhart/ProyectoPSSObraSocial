@@ -134,4 +134,23 @@ class RequestController extends Controller
         }
         return $vista;
     }
+    
+    public function requestStateChange(string $id,string $state){
+        $clientRequest = ModelsRequest::find($id);
+        if ($clientRequest) {
+            if ($state="approved"){
+                $clientRequest->state = 'Aprobada';
+                $clientRequest->save();
+                return view('empleado.solicitudes')->with (['message' => 'Solicitud aprobada con éxito']);
+            }else{
+                $clientRequest->state = 'Desaprobada';
+                $clientRequest->save();
+                return view('empleado.solicitudes')->with (['message' => 'Solicitud desaprobada con éxito']);
+            }
+        }else
+            return response()->json(['message' => 'Solicitud no encontrada'], 404);
+    }
+
+    
+
 }
