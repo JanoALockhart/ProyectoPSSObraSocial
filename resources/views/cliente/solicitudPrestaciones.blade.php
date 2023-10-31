@@ -3,7 +3,10 @@
         @include('navbars.clientNavbar')
     </x-slot>
 
-    <div class="flex bg-white mx-auto my-4 p-4 rounded-lg border border-black max-w-5xl">
+    <h1 class="mt-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 dark:text-white">
+        Solicitud de Prestación
+    </h1>
+    <div class="flex bg-white mx-auto mb-4 p-4 rounded-lg border border-black max-w-5xl">
         <div class="grow">
             <div class="flex justify-between p-2 bg-gray-200">
                 <h2>ID:</h2>
@@ -42,6 +45,9 @@
                 <h2>Descripción:</h2>
                 <h2>{{ $benefitRequest->description }}</h2>
             </div>
+        </div>
+        <div class="">
+            <img class="max-h-[calc(9*2.5rem)]" src="{{ asset($benefitRequest->request_image_path) }}">
         </div>
     </div>
 </x-app-layout>
