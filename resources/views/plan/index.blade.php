@@ -1,6 +1,5 @@
 <x-app-layout>
-
-<x-slot name="navbar">
+    <x-slot name="navbar">
         @include('navbars.adminNavbar')
     </x-slot>
     <x-slot name="header">
@@ -14,60 +13,55 @@
 
             <!-- Contenedor del formulario y la lista de planes -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-700">
+
                 <!-- Formulario para agregar un nuevo plan -->
                 <div class="mb-4">
-                    <button id="btnAgregarPlan" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Agregar Plan</button>
+                    <a href="{{ route('plans.create') }}" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover-text-white transition duration-300 ease-in-out">Agregar Plan</a>
                 </div>
-
-                <!-- Barra de búsqueda con botón de búsqueda -->
                 <div class="mb-4 flex">
                     <input type="text" id="txtBusqueda" class="form-input w-full rounded-full px-4 py-2" placeholder="Buscar Plan">
-                    <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 ml-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">
+                    <button id="btnBuscar" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 ml-2 hover-bg-gray-700 hover-text-white transition duration-300 ease-in-out">
                         Buscar
                     </button>
                 </div>
 
-                <!-- Lista de elementos -->
                 <ul id="listaPlanes" class="list-group">
-                    <!-- Elemento 1 con margen superior e inferior -->
+                @foreach ($planes as $plan)
                     <li class="custom-list-item mt-2 mb-2">
                         <div class="flex justify-between items-center">
                             <div>
-                                <span class="font-semibold">Nombre del Plan 1</span>
-                                <!-- Subítemes dentro del primer elemento -->
+                                <span class="font-semibold">Nombre:</span><span> {{ $plan->name }}</span></br>
+                                <span class="font-semibold">Precio por Persona: </span><span> {{ $plan->price }} $</span></br>
+                                <span class="font-semibold">Prestaciones:</span>
                                 <ul class="custom-sub-list ml-8">
-                                    <li>Prestación 1</li>
-                                    <li>Prestación 2</li>
+                                    @if ($plan->prestations)
+                                        @foreach ($plan->prestations as $prestation)
+                                            <li>{{ $prestation->name }}</li>
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </div>
                             <div>
-                                <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Modificar</button>
-                                <button class="btn btn-danger border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Dar de Baja</button>
-                            </div>
-                        </div>
-                    </li>
+                            <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover-bg-gray-700 hover-text-white transition duration-300 ease-in-out">
+                                <a href="{{ route('plans.edit', $plan) }}" style="text-decoration: none; color: inherit;">Modificar</a>
+                            </button>
 
-                    <!-- Elemento 2 con margen superior e inferior -->
-                    <li class="custom-list-item mt-2 mb-2">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="font-semibold">Nombre del Plan 2</span>
-                                <!-- Subítemes dentro del segundo elemento -->
-                                <ul class="custom-sub-list ml-8">
-                                    <li>Prestación 3</li>
-                                    <li>Prestación 4</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Modificar</button>
-                                <button class="btn btn-danger border border-gray-700 rounded-full px-4 py-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Dar de Baja</button>
+                                <form method="POST" action="{{ route('plans.switch', $plan) }}">
+                                    @csrf
+                                    @method('POST')
+                                    <button type="submit" class="btn btn-{{ $plan->state ? 'danger' : 'success' }} border border-gray-700 rounded-full px-4 py-2 hover-bg-gray-700 hover-text-white transition duration-300 ease-in-out">
+                                        {{ $plan->state ? 'Dar de Baja' : 'Dar de Alta' }}
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </li>
+                @endforeach
                 </ul>
             </div>
         </div>
     </div>
+
 </x-app-layout>
 
 <style>
@@ -86,3 +80,23 @@
         list-style-type: none; /* Elimina las viñetas de la lista */
     }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#btnBuscar').click(function () {
+            var searchTerm = $('#txtBusqueda').val().toLowerCase();
+
+            // Filtra los planes por el término de búsqueda
+            $('#listaPlanes .custom-list-item').each(function () {
+                var planName = $(this).text().toLowerCase();
+
+                if (planName.includes(searchTerm)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
+

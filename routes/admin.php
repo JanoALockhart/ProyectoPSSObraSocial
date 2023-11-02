@@ -14,10 +14,18 @@ Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
 
 
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');
+    Route::post('/plans/switch/{plan}', [PlanController::class, 'switch'])->name('plans.switch');
+    Route::get('/plans/create', [PlanController::class, 'create'])->name('plans.create');
+    Route::post('/plans', [PlanController::class, 'store'])->name('plans.store');
+    Route::get('/plans/edit/{plan}', [PlanController::class, 'edit'])->name('plans.edit');
+    Route::put('/plans/{plan}', [PlanController::class, 'update'])->name('plans.update');
+
+
     Route::get('/empleados', [AdminEmpleadoController::class, 'index'])->name('admin.adminEmpleado.index');
-    Route::get('/empleados/details', [AdminEmpleadoController::class, 'details'])->name('admin.adminEmpleado.details');
+    Route::get('/empleados/details/{employee}', [AdminEmpleadoController::class, 'details'])->name('admin.adminEmpleado.details');
     Route::get('/empleados/create', [AdminEmpleadoController::class, 'create'])->name('admin.adminEmpleado.create');
-    Route::get('/empleados/edit', [AdminEmpleadoController::class, 'edit'])->name('admin.adminEmpleado.edit');
+    Route::get('/empleados/edit/{employee}', [AdminEmpleadoController::class, 'edit'])->name('admin.adminEmpleado.edit');
+    Route::patch('/empleados/update', [AdminEmpleadoController::class, 'update'])->name('admin.adminEmpleado.update');
 
     Route::get('/admin/clientes', [AdminClienteController::class, 'index'])->name('admin.adminCliente.index');
     Route::get('/admin/clientes/details/{client}', [AdminClienteController::class, 'details'])->name('admin.adminCliente.details');
@@ -35,6 +43,6 @@ Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
         return view('admin.solicitudPrestaciones');
     })->name('admin.solicitudPrestaciones');
 
-
+    Route::post('/empleados/cambiarEstado/{empleado}', [AdminEmpleadoController::class, 'cambiarEstado'])->name('empleados.cambiarEstado');
 
 });
