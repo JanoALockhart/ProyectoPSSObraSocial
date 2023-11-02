@@ -67,8 +67,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($client));
         
-        Auth::login($user);
-
         return redirect()->route('empleado.paginaCliente-Empleados');
     }
 }
