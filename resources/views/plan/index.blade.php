@@ -26,37 +26,37 @@
                 </div>
 
                 <ul id="listaPlanes" class="list-group">
-                @foreach ($planes as $plan)
-                    <li class="custom-list-item mt-2 mb-2">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="font-semibold">Nombre:</span><span> {{ $plan->name }}</span></br>
-                                <span class="font-semibold">Precio por Persona: </span><span> {{ $plan->price }} $</span></br>
-                                <span class="font-semibold">Prestaciones:</span>
-                                <ul class="custom-sub-list ml-8">
-                                    @if ($plan->prestations)
-                                        @foreach ($plan->prestations as $prestation)
-                                            <li>{{ $prestation->name }}</li>
-                                        @endforeach
-                                    @endif
-                                </ul>
-                            </div>
-                            <div>
-                            <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover-bg-gray-700 hover-text-white transition duration-300 ease-in-out">
-                                <a href="{{ route('plans.edit', $plan) }}" style="text-decoration: none; color: inherit;">Modificar</a>
-                            </button>
-
-                                <form method="POST" action="{{ route('plans.switch', $plan) }}">
-                                    @csrf
-                                    @method('POST')
-                                    <button type="submit" class="btn btn-{{ $plan->state ? 'danger' : 'success' }} border border-gray-700 rounded-full px-4 py-2 hover-bg-gray-700 hover-text-white transition duration-300 ease-in-out">
-                                        {{ $plan->state ? 'Dar de Baja' : 'Dar de Alta' }}
+                    @foreach ($planes as $plan)
+                        <li class="custom-list-item mt-2 mb-2">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Nombre:</span><span> {{ $plan->name }}</span></br>
+                                    <span class="font-semibold">Precio por Persona: </span><span> {{ $plan->price }} $</span></br>
+                                    <span class="font-semibold">Prestaciones:</span>
+                                    <ul class="custom-sub-list ml-8">
+                                        @if ($plan->prestations)
+                                            @foreach ($plan->prestations as $prestation)
+                                                <li>{{ $prestation->name }}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover-bg-gray-700 hover-text-white transition duration-300 ease-in-out">
+                                        <a href="{{ route('plans.edit', $plan) }}" style="text-decoration: none; color: inherit;">Modificar</a>
                                     </button>
-                                </form>
+
+                                    <form method="POST" action="{{ route('plans.switch', $plan) }}">
+                                        @csrf
+                                        @method('POST')
+                                        <button type="submit" class="btn btn-{{ $plan->state ? 'danger' : 'success' }} border border-gray-700 rounded-full px-4 py-2 hover-bg-gray-700 hover-text-white transition duration-300 ease-in-out">
+                                            {{ $plan->state ? 'Dar de Baja' : 'Dar de Alta' }}
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                @endforeach
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -84,19 +84,29 @@
 <script>
     $(document).ready(function () {
         $('#btnBuscar').click(function () {
-            var searchTerm = $('#txtBusqueda').val().toLowerCase();
+            // Clear previous search results
+            $('#listaPlanes .custom-list-item').show();
 
-            // Filtra los planes por el término de búsqueda
+            var searchTerm = $('#txtBusqueda').val().toLowerCase().trim();
+            var resultsFound = false;
+
+            // Filter plans by the search term in the "Nombre" attribute
             $('#listaPlanes .custom-list-item').each(function () {
-                var planName = $(this).text().toLowerCase();
+                var planNombre = $(this).find('span.font-semibold:contains("Nombre")').next().text().toLowerCase();
 
-                if (planName.includes(searchTerm)) {
+                if (planNombre.includes(searchTerm)) {
                     $(this).show();
+                    resultsFound = true;
                 } else {
                     $(this).hide();
                 }
             });
+
+            // Display a message if no results found
+            if (!resultsFound) {
+                // You can customize the message or show/hide an element.
+                alert('No results found.');
+            }
         });
     });
 </script>
-
