@@ -153,4 +153,21 @@ class RequestController extends Controller
 
     
 
+    /**
+ * Display a listing of all client requests.
+ */
+public function indexAllClientRequests(Request $request)
+{
+    // Obtener todas las solicitudes de reintegro
+    $refundRequests = ModelsRequest::where('type', 'Reintegro')->get();
+
+    // Obtener todas las solicitudes de prestación
+    $benefitRequests = ModelsRequest::where('type', 'Prestacion')->get();
+
+    return view('empleado.solicitudes', [
+        'refundRequests' => $refundRequests,
+        'benefitRequests' => $benefitRequests,
+    ]);
+}
+
 }

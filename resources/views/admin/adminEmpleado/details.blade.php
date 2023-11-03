@@ -39,7 +39,7 @@
             <div class="mb-4">
                 <strong class="text-lg text-blue-500">Estado:</strong> 
                 <span :class="{ 'text-green-500': $employee->user->state === 'Activo', 'text-red-500': $employee->user->state === 'Inactivo' }">
-                    {{ $employee->user->state === 'active' ? 'Activo' : 'Inactivo' }}
+                    {{ $employee->user->state ? 'Activo' : 'Inactivo' }}
                 </span>
              </div>
 

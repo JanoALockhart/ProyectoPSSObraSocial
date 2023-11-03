@@ -28,4 +28,8 @@ class Client extends Model
     public function requests(){
         return $this->hasMany(Request::class);
     }
+
+    public function minors(){
+        return $this->hasMany(Minor18::class);
+    }
 }

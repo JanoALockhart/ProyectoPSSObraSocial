@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ClientController;
@@ -19,9 +20,8 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
     })->name('employeeProfile');
 
 
-    Route::get('/empleado_solicitudes', function () {
-        return view('empleado.solicitudes');
-    })->name('empleado.solicitudes');
+    Route::get('/empleado_solicitudes', [RequestController::class, 'indexAllClientRequests'])
+        ->name('empleado.solicitudes');
     Route::get('/empleado_solicitudReintegro', function(){
         return view('empleado.solicitudReintegro');
     })->name('empleado.solicitudReintegro');

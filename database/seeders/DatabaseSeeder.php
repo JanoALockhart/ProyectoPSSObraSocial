@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ClientSeeder::class);
         $this->call(PlanSeeder::class);
         $this->call(RequestSeeder::class);
+        $this->call(Minor18Seeder::class);
     }
 }
