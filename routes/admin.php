@@ -4,13 +4,18 @@
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\AdminEmpleadoController;
 use App\Http\Controllers\AdminClienteController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
     Route::get('/adminHome', function () {
         return view('admin.home');
     })->name('adminHome');
+    Route::get('/adminProfile',[AdminController::class, 'showProfile'])->name('adminProfile');
+    Route::get('/adminEditProfile', [AdminController::class, 'editProfileForm'])
+    ->name('adminEditProfile');
 
+    Route::post('/adminUpdateProfile', [AdminController::class, 'updateProfile'])->name('adminUpdateProfile');
 
 
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.index');

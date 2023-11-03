@@ -21,7 +21,7 @@
             <x-navbarIcons.planes/>
         </x-navbarButton>
 
-        <x-navbarButton title="Perfil" route="{{ route('profile.edit')}}">
+        <x-navbarButton title="Perfil" route="{{ route('adminProfile') }}">
             <x-navbarIcons.perfil/>
         </x-navbarButton>
         
