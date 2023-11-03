@@ -136,21 +136,35 @@ class RequestController extends Controller
     }
     
     public function requestStateChange(string $id,string $state){
+        
         $clientRequest = ModelsRequest::find($id);
         if ($clientRequest) {
-            if ($state="approved"){
-                $clientRequest->state = 'Aprobada';
+            if ($state=="approved"){
+                $clientRequest->state = 'Aprobado';
                 $clientRequest->save();
-                return view('empleado.solicitudes')->with (['message' => 'Solicitud aprobada con éxito']);
+                return back()->with (['message' => 'Solicitud Aprobado con éxito']);
             }else{
-                $clientRequest->state = 'Desaprobada';
+                $clientRequest->state = 'Desaprobado';
                 $clientRequest->save();
-                return view('empleado.solicitudes')->with (['message' => 'Solicitud desaprobada con éxito']);
+                return back()->with (['message' => 'Solicitud Desaprobado con éxito']);
             }
+            dd($state);
+            
         }else
             return response()->json(['message' => 'Solicitud no encontrada'], 404);
     }
 
+    public function viewRequest(string $id)
+{
+    $request = ModelsRequest::find($id);
+    $vista=null;
+    if($request['type']=='Reintegro'){
+        $vista = view('empleado.solicitudReintegro', ['refundRequest' => $request]);
+    }else if($request['type']=='Prestacion'){
+        $vista = view('empleado.solicitudPrestaciones', ['benefitRequest' => $request]);
+    }
+    return $vista;
+}
     
 
     /**
@@ -169,5 +183,10 @@ public function indexAllClientRequests(Request $request)
         'benefitRequests' => $benefitRequests,
     ]);
 }
+
+
+
+
+
 
 }

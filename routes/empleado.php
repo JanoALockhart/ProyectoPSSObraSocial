@@ -22,12 +22,10 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
 
     Route::get('/empleado_solicitudes', [RequestController::class, 'indexAllClientRequests'])
         ->name('empleado.solicitudes');
-    Route::get('/empleado_solicitudReintegro', function(){
-        return view('empleado.solicitudReintegro');
-    })->name('empleado.solicitudReintegro');
-    Route::get('/empleado_solicitudPrestaciones', function(){
-        return view('empleado.solicitudPrestaciones');
-    })->name('empleado.solicitudPrestaciones');
+    Route::get('/empleado_solicitudReintegro/{id}', [RequestController::class, 'viewRequest'])
+    ->name('empleado.solicitudReintegro');
+    Route::get('/empleado_solicitudPrestaciones/{id}', [RequestController::class, 'viewRequest'])
+    ->name('empleado.solicitudPrestaciones');
 
 
     Route::get('/empleado_paginaCliente-Empleados', function(){
