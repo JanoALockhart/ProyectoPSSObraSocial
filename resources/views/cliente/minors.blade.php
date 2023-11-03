@@ -10,7 +10,6 @@
                         <div class="grow flex items-center justify-center">
                             <p class="m-1 text-lg text-gray-900 dark:text-white">DNI: {{ $minor->DNI }} </p>
                             <p class="m-1 text-lg text-gray-900 dark:text-white">Nombre: {{ $minor->lastName . ", " . $minor->firstName }}</p>
-                            <p class="m-1 text-lg text-gray-900 dark:text-white">Plan Asociado: {{ $minor->dni }} </p>
                         </div>
                     </div>
                 @empty

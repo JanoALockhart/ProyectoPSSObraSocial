@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminEmpleadoController;
+use App\Http\Controllers\AdminEmployeeMinorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ClientController;
@@ -29,7 +31,7 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
         return view('empleado.solicitudPrestaciones');
     })->name('empleado.solicitudPrestaciones');
 
-    
+
 
     Route::post('/empleado/registrar-cliente', [RegisteredUserController::class, 'store'])->name('register');
 
@@ -38,5 +40,8 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
     });
 
 
+    Route::get('/menoresDeCliente/{id}', [AdminEmployeeMinorController::class, 'listMinors']);
+    Route::delete('/menoresDeCliente/{id}', [AdminEmployeeMinorController::class, 'softDeleteMinor'])->name('minor.softDelete');
+    Route::post('/restoreMenor/{id}', [AdminEmployeeMinorController::class, 'restoreMinor'])->name('minor.restore');
 });
 
