@@ -4,6 +4,7 @@ use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\EmployeeController;
 
 Route::get('/empleado_paginaCliente-Empleados', [ClientController::class, 'index'])
     ->name('empleado.paginaCliente-Empleados');
@@ -15,9 +16,12 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
     })->name('employeeHome');
 
 
-    Route::get('/employeeProfile', function () {
-        return view('empleado.perfil');
-    })->name('employeeProfile');
+    Route::get('/employeeProfile',[EmployeeController::class, 'showProfile'])->name('employeeProfile');
+    Route::get('/employeeEditProfile', [EmployeeController::class, 'editProfileForm'])
+    ->name('employeeEditProfile');
+
+    Route::post('/employeeUpdateProfile', [EmployeeController::class, 'updateProfile'])->name('employeeUpdateProfile');
+
 
 
     Route::get('/empleado_solicitudes', [RequestController::class, 'indexAllClientRequests'])
