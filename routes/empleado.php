@@ -40,8 +40,8 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
     });
 
 
-    Route::get('/menoresDeCliente/{id}', [AdminEmployeeMinorController::class, 'listMinors']);
-    Route::delete('/menoresDeCliente/{id}', [AdminEmployeeMinorController::class, 'softDeleteMinor'])->name('minor.softDelete');
-    Route::post('/restoreMenor/{id}', [AdminEmployeeMinorController::class, 'restoreMinor'])->name('minor.restore');
+    Route::get('/employeeClientMinors/{id}', [AdminEmployeeMinorController::class, 'listMinors'])->name('empleado.showClientMinors');
+    Route::delete('/employeeClientMinors/{id}', [AdminEmployeeMinorController::class, 'softDeleteMinor'])->name('empleado.softDeleteMinor');
+    Route::post('/employeeRestoreMinor/{id}', [AdminEmployeeMinorController::class, 'restoreMinor'])->name('empleado.restoreMinor');
 });
 
