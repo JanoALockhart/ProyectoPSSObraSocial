@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('email')->unique();
             $table->unsignedBigInteger('client_id');
-
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('client_id')->references('id')->on('clients');
