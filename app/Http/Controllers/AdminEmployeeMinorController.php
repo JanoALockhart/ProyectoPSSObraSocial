@@ -32,4 +32,12 @@ class AdminEmployeeMinorController extends Controller
         Minor18::withTrashed()->find($id)->restore();
         return back();
     }
+
+    public function listMinorsAdmin($id){
+        $client = Client::find($id);
+        return view('admin.menoresDeCliente', [
+            'clientName' => $this->getClientName($client),
+            'clientMinors' => $client->minors()->withTrashed()->orderBy('DNI')->get()
+        ]);
+    }
 }
