@@ -20,7 +20,26 @@ class ProfileController extends Controller
         
         $user = $request->user();
         $canEditName = $user->can('modify-basic-fields');
-        return view('profile.edit', compact('user', 'canEditName'));
+
+        $role = $user->getRoleNames()->first();
+            
+        $viewName = null;
+
+        switch($role)
+        {
+            case "client": 
+                $viewName = "clientHome";
+                break;
+            case "admin": 
+                $viewName = "adminHome";
+                break;    
+            case "employee": 
+                $viewName = "employeeHome";
+                break;
+            default:break;
+        }
+
+        return view('profile.edit', compact('user', 'canEditName', 'role'));
     }
 
     /**

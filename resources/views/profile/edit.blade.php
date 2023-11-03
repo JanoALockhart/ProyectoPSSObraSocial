@@ -1,8 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Mi Perfil') }}
-        </h2>
+        @switch($role)
+            @case("client")
+                @include('navbars.clientNavbar')
+                @break
+            @case("admin")
+                @include('navbars.adminNavbar')
+                @break 
+            @case("employee")
+                @include('navbars.employeeNavbar')
+                @break
+            @default
+                @break
+        @endswitch
     </x-slot>
 
     <div class="py-12">

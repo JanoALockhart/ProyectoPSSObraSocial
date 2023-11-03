@@ -13,7 +13,7 @@
             <x-navbarIcons.cupon/>
         </x-navbarButton>
 
-        <x-navbarButton title="Perfil" route="{{ route('clientProfile') }}">
+        <x-navbarButton title="Perfil" route="{{ route('profile.edit')}}">
             <x-navbarIcons.perfil/>
         </x-navbarButton>
 

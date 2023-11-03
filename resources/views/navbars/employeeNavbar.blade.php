@@ -14,7 +14,7 @@
             <x-navbarIcons.solicitud/>
         </x-navbarButton>
 
-        <x-navbarButton title="Perfil" route="{{ route('employeeProfile') }}">
+        <x-navbarButton title="Perfil" route="{{ route('profile.edit')}}">
             <x-navbarIcons.perfil/>
         </x-navbarButton>
 
