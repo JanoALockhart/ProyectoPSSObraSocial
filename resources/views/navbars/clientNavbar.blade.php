@@ -13,7 +13,12 @@
             <x-navbarIcons.cupon/>
         </x-navbarButton>
 
+        <x-navbarButton title="Visualizar Menores" route="{{ route('menores') }}">
+            <x-navbarIcons.register/>
+        </x-navbarButton>
+
         <x-navbarButton title="Perfil" route="{{ route('profile.edit')}}">
+
             <x-navbarIcons.perfil/>
         </x-navbarButton>
 

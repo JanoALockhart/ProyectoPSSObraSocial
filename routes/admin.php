@@ -5,6 +5,7 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\AdminEmpleadoController;
 use App\Http\Controllers\AdminClienteController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminEmployeeMinorController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
@@ -50,4 +51,8 @@ Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
 
     Route::post('/empleados/cambiarEstado/{empleado}', [AdminEmpleadoController::class, 'cambiarEstado'])->name('empleados.cambiarEstado');
 
+
+    Route::get('/adminClientMinors/{id}', [AdminEmployeeMinorController::class, 'listMinorsAdmin'])->name('admin.showClientMinors');
+    Route::delete('/adminClientMinors/{id}', [AdminEmployeeMinorController::class, 'softDeleteMinor'])->name('admin.softDeleteMinor');
+    Route::post('/adminRstoreMinor/{id}', [AdminEmployeeMinorController::class, 'restoreMinor'])->name('admin.restoreMinor');
 });
