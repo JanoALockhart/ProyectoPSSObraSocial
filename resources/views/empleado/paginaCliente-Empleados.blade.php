@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="flex flex-col items-center">
-	
+
 
         <div>
             <a href="{{ route('register') }}" class="w-64 bg-blue-500 hover:bg-blue-700 text-white p-3 m-2 rounded self-center">
@@ -12,18 +12,30 @@
             </a>
             <input type="text" id="searchInput" placeholder="Buscar por DNI, Nombre o Plan" class="w-64 p-3 border border-gray-300 rounded">
         </div>
-        <div class="m-4 p-4 bg-white" style="width: 800px">
+        <div class="m-4 p-4 bg-white w-4/6">
             <div class="m-4 p-4 bg-white">
                 <!-- Listado de Clientes -->
                 <div id="searchResults">
                     @foreach ($clients as $client)
-                    <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                        <div class="grow flex">
-                            <h3 class="mx-2"><b>DNI:</b> {{ $client->DNI }}</h3>
-                            <h3 class="mx-2"><b>Nombre:</b> {{ $client->firstName }} {{ $client->lastName }}</h3>
-                            <h3 class="mx-2"><b>Plan Asociado:</b> {{ $client->plan }}</h3>
+                        <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
+                            <div class="grow flex items-center">
+                                <h3 class="mx-2"><b>DNI:</b> {{ $client->DNI }}</h3>
+                                <h3 class="mx-2"><b>Nombre:</b> {{ $client->firstName }} {{ $client->lastName }}</h3>
+                                <h3 class="mx-2"><b>Plan Asociado:</b> {{ $client->plan }}</h3>
+                            </div>
+                            <div class="flex">
+                                <a href="{{ route('empleado.showClientMinors', $client->id) }}">
+                                    <button type="button" class="m-1 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
+                                        Visualizar Menores
+                                    </button>
+                                </a>
+                                <a href="#">
+                                    <button type="button" class="m-1 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
+                                        Asignar Menor
+                                    </button>
+                                </a>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>

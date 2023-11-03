@@ -14,7 +14,7 @@ class ClientController extends Controller
     {
         $clients = DB::table('clients')
             ->join('users', 'clients.DNI', '=', 'users.DNI')
-            ->select('clients.DNI', 'users.firstName', 'users.lastName', 'clients.plan')
+            ->select('clients.id','clients.DNI', 'users.firstName', 'users.lastName', 'clients.plan')
             ->get();
 
         return view('empleado.paginaCliente-Empleados', ['clients' => $clients]);
