@@ -17,7 +17,10 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
 
 
     Route::get('/employeeProfile',[EmployeeController::class, 'showProfile'])->name('employeeProfile');
+    Route::get('/employeeEditProfile', [EmployeeController::class, 'editProfileForm'])
+    ->name('employeeEditProfile');
 
+    Route::post('/employeeUpdateProfile', [EmployeeController::class, 'updateProfile'])->name('employeeUpdateProfile');
 
 
 
