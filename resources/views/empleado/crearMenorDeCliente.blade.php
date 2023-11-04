@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="navbar">
-        @include('navbars.adminNavbar')
+        @include('navbars.employeeNavbar')
     </x-slot>
 
     <div class="grow flex items-center justify-center"  >
-        <form method="POST" action="{{ route('admin.storeMinorAdmin', $clientId)}}">
+        <form method="POST" action="{{ route('empleado.storeMinorEmployee', $clientId)}}">
             <h3 class="m-5 font-bold dark:text-white">Asignar menor a {{ $clientName }}</h3>
             @csrf
 
@@ -57,7 +57,7 @@
 
             <div class="text-center">
                 <button type="submit" class="btn btn-primary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Guardar</button>
-                <a href="{{ route('admin.showClientMinors', $clientId) }}" class="btn btn-secondary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Cancelar</a>
+                <a href="{{ route('empleado.showClientMinors', $clientId) }}" class="btn btn-secondary border border-gray-700 rounded-full px-4 py-2 mr-2 hover:bg-gray-700 hover:text-white transition duration-300 ease-in-out">Cancelar</a>
             </div>
         </form>
     </div>

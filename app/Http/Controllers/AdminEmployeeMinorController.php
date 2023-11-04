@@ -56,7 +56,7 @@ class AdminEmployeeMinorController extends Controller
 
     }
 
-    public function storeMinor(Request $request){
+    public function storeMinorAdmin(Request $request){
 
         $request->validate([
             'email' => 'required|email',
@@ -72,7 +72,37 @@ class AdminEmployeeMinorController extends Controller
         'lastName'=> $request->lastName, 'birthDate' => $request->birthDate,
         'phone'=> $request->phone, 'address'=>$request->address, 'email'=>$request->email, 'client_id' => $request->clientId
         ]);
-
         return redirect()->route('admin.showClientMinors', $request->clientId)->with('success', 'El menor se ha creado correctamente.');
+    }
+
+    public function createMinorsEmployee($id){
+        $client = Client::find($id);
+        $planes = Plan::with('prestations')->get(); // Obtener todos los planes
+
+        return view('empleado.crearMenorDeCliente', [
+            'clientName' => $this->getClientName($client),
+            'clientId' => $id,
+            'plans' => $planes
+        ]);
+
+    }
+
+    public function storeMinorEmployee(Request $request){
+
+        $request->validate([
+            'email' => 'required|email',
+            'firstName' => 'required|string',
+            'lastName' => 'required|string',
+            'birthDate' => 'required|date',
+            'phone' => 'required|string',
+            'address' => 'required|string',
+            'DNI' => 'required|string',
+        ]);
+
+        $minor = Minor18::create(['DNI'=>$request->DNI, 'firstName' => $request->firstName,
+        'lastName'=> $request->lastName, 'birthDate' => $request->birthDate,
+        'phone'=> $request->phone, 'address'=>$request->address, 'email'=>$request->email, 'client_id' => $request->clientId
+        ]);
+        return redirect()->route('empleado.showClientMinors', $request->clientId)->with('success', 'El menor se ha creado correctamente.');
     }
 }
