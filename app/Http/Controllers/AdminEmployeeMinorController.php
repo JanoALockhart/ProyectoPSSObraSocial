@@ -73,6 +73,6 @@ class AdminEmployeeMinorController extends Controller
         'phone'=> $request->phone, 'address'=>$request->address, 'email'=>$request->email, 'client_id' => $request->clientId
         ]);
 
-        return redirect()->route('admin.showClientMinors', $request->clientId)->with('success', 'El plan se ha creado correctamente.');
+        return redirect()->route('admin.showClientMinors', $request->clientId)->with('success', 'El menor se ha creado correctamente.');
     }
 }
