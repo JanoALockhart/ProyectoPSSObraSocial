@@ -17,6 +17,7 @@ class RequestController extends Controller
      */
     public function indexClientRequests(Request $request)
     {
+    
         //Obtener el cliente loggeado y sus solicitudes
         $client = $this->getLoggedClient();
         $clientRequests = $client->requests->reverse();
@@ -140,16 +141,25 @@ class RequestController extends Controller
  */
 public function indexAllClientRequests(Request $request)
 {
+    $user = Auth::user();
+    $role = $user->getRoleNames()->first();
     // Obtener todas las solicitudes de reintegro
     $refundRequests = ModelsRequest::where('type', 'Reintegro')->get();
 
     // Obtener todas las solicitudes de prestación
     $benefitRequests = ModelsRequest::where('type', 'Prestacion')->get();
 
-    return view('empleado.solicitudes', [
+    if ($role === "employee")
+        return view('empleado.solicitudes', [
+            'refundRequests' => $refundRequests,
+            'benefitRequests' => $benefitRequests,
+        ]);
+
+    return view('admin.solicitudes', [
         'refundRequests' => $refundRequests,
         'benefitRequests' => $benefitRequests,
     ]);
+    
 }
 
 }

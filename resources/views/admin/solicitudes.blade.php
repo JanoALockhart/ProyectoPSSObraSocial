@@ -4,93 +4,111 @@
     </x-slot>
 
     <div class="flex flex-col">
-        <!-- <div class="w-128 m-2 rounded self-center flex"> -->
-            <form class="max-w-5xl ">    
-                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg>
-                    </div>
-                    <input type="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ID Solicitud / Nombre Cliente" required>
-                    <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-                </div>
-            </form>
-        <!-- </div> -->
-        
+        <div class="w-96 m-2 rounded self-center flex items-center">
+            <input type="text" id="txtBusqueda" placeholder="Buscar solicitudes..." class="w-80 p-3 border border-gray-300 rounded">
+            <button id="btnBuscar" class="bg-blue-500 text-white px-4 py-2 rounded">Buscar</button>
+            <button id="btnLimpiar" class="bg-red-500 text-white px-4 py-2 rounded ml-2">Limpiar</button>
+        </div>
+
         <div class="grid grid-cols-2 gap-4">
-            <div class=" m-4 p-4 bg-white">
+            <div class="m-4 p-4 bg-white">
                 <h2 class="text-center mb-2">Solicitudes de Reintegro</h2>
-                <!-- Listado de Solicitudes. Modificar cuando se tengan datos-->
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('admin.solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
-
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('admin.solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
-
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('admin.solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
-
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('admin.solicitudReintegro') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
+                <ul id="refundRequestsList" class="custom-list">
+                    @foreach ($refundRequests as $request)
+                        <li class="custom-list-item">
+                            <!-- Contenido de cada solicitud de Reintegro -->
+                            <div class="custom-list-content">
+                                Nombre: {{ $request->recipient_name }}<br>
+                                Apellido: {{ $request->recipient_last_name }}<br>
+                                Estado: {{ $request->state }}<br>
+                                Fecha: {{ $request->date }}<br>
+                            </div>
+                            <a href="{{ route('admin.solicitudReintegro') }}" class="custom-list-link">Ver</a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
 
-            <div class=" m-4 p-4 bg-white">
+            <div class="m-4 p-4 bg-white">
                 <h2 class="text-center mb-2">Solicitudes de Prestaciones</h2>
-                <!-- Listado de Solicitudes. Modificar cuando se tengan datos-->
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('admin.solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
-
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('admin.solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
-
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('admin.solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
-
-                <div class="flex bg-blue-200 p-2 rounded-lg border border-black my-3">
-                    <div class="grow flex items-center justify-center">
-                        <h3 class="mx-2">ID: ---</h3>
-                        <h3 class="mx-2">ESTADO: ---</h3>
-                    </div>
-                    <a href="{{ route('admin.solicitudPrestaciones') }}"  class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">Ver</a>
-                </div>
+                <ul id="benefitRequestsList" class="custom-list">
+                    @foreach ($benefitRequests as $request)
+                        <li class="custom-list-item">
+                            <!-- Contenido de cada solicitud de Prestación -->
+                            <div class="custom-list-content">
+                                Nombre: {{ $request->recipient_name }}<br>
+                                Apellido: {{ $request->recipient_last_name }}<br>
+                                Estado: {{ $request->state }}<br>
+                                Fecha: {{ $request->date }}<br>
+                            </div>
+                            <a href="{{ route('admin.solicitudPrestaciones') }}" class="custom-list-link">Ver</a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
 </x-app-layout>
+
+<style>
+    /* Estilo personalizado para los elementos de la lista */
+    .custom-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .custom-list-item {
+        background-color: #f3f4f6;
+        border-radius: 8px;
+        margin: 10px 0;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .custom-list-content {
+        flex: 1;
+    }
+
+    .custom-list-link {
+        background-color: #3490dc;
+        color: #fff;
+        padding: 8px 12px;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background-color 0.3s;
+    }
+
+    .custom-list-link:hover {
+        background-color: #2779bd;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#btnBuscar').click(function () {
+            realizarBusqueda();
+        });
+
+        $('#btnLimpiar').click(function () {
+            $('#txtBusqueda').val('');
+            realizarBusqueda();
+        });
+
+        function realizarBusqueda() {
+            var searchTerm = $('#txtBusqueda').val().toLowerCase();
+
+            $('.custom-list-item').each(function () {
+                var requestContent = $(this).text().toLowerCase();
+
+                if (requestContent.includes(searchTerm)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+    });
+</script>

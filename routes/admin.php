@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminEmpleadoController;
 use App\Http\Controllers\AdminClienteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminEmployeeMinorController;
+use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
@@ -38,10 +39,8 @@ Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
     Route::get('/admin/clientes/edit/{client}', [AdminClienteController::class, 'edit'])->name('admin.adminCliente.edit');
     Route::patch('/admin/clientes/update', [AdminClienteController::class, 'update'])->name('admin.adminCliente.update');
 
-    Route::get('/admin/solicitudes', function () {
-        return view('admin.solicitudes');
-    })->name('admin.solicitudes');
-
+    Route::get('/admin/solicitudes', [RequestController::class, 'indexAllClientRequests'])
+    ->name('admin.solicitudes');
     Route::get('admin/solicitudReintegro', function(){
         return view('admin.solicitudReintegro');
     })->name('admin.solicitudReintegro');
