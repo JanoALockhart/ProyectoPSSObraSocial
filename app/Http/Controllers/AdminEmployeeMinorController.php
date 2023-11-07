@@ -59,13 +59,13 @@ class AdminEmployeeMinorController extends Controller
     public function storeMinorAdmin(Request $request){
 
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|unique:minor18s',
             'firstName' => 'required|string',
             'lastName' => 'required|string',
             'birthDate' => 'required|date',
             'phone' => 'required|string',
             'address' => 'required|string',
-            'DNI' => 'required|string',
+            'DNI' => 'required|string|unique:minor18s',
         ]);
 
         $minor = Minor18::create(['DNI'=>$request->DNI, 'firstName' => $request->firstName,
@@ -90,13 +90,13 @@ class AdminEmployeeMinorController extends Controller
     public function storeMinorEmployee(Request $request){
 
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'unique:minor18s|required|email',
             'firstName' => 'required|string',
             'lastName' => 'required|string',
             'birthDate' => 'required|date',
             'phone' => 'required|string',
             'address' => 'required|string',
-            'DNI' => 'required|string',
+            'DNI' => 'unique:minor18s|required|string',
         ]);
 
         $minor = Minor18::create(['DNI'=>$request->DNI, 'firstName' => $request->firstName,
