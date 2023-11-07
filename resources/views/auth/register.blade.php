@@ -83,9 +83,9 @@
                 <div>
                     <x-input-label for="plan" :value="__('Plan')" />
                     <select id="plan" name="plan" class="mt-1 block w-full" required>
-                        <option value="Bronce">Bronce</option>
-                        <option value="Plata">Plata</option>
-                        <option value="Oro">Oro</option>
+                        @foreach ($planes as $plan)
+                            <option value="{{ $plan->id }}">{{ $plan->name }}</option>
+                        @endforeach
                     </select>
                     <x-input-error class="mt-2" :messages="$errors->get('plan')" />
                 </div>
