@@ -22,10 +22,6 @@
         </div>
 
         <div class="mb-4">
-            <strong class="text-lg text-blue-500">Plan:</strong> {{ $client->plan }}
-        </div>
-
-        <div class="mb-4">
             <strong class="text-lg text-blue-500">Fecha de Registro:</strong> {{ $client->registration_date }}
         </div>
 
@@ -43,6 +39,10 @@
 
         <div class="mb-4">
             <strong class="text-lg text-blue-500">Email:</strong> {{ $client->user->email }}
+        </div>
+
+        <div class="mb-4">
+            <strong class="text-lg text-blue-500">Plan:</strong> {{ $client->plan }}
         </div>
 
         <div class="mb-4">
