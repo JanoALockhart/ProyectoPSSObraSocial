@@ -54,4 +54,6 @@ Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
     Route::get('/adminClientMinors/{id}', [AdminEmployeeMinorController::class, 'listMinorsAdmin'])->name('admin.showClientMinors');
     Route::delete('/adminClientMinors/{id}', [AdminEmployeeMinorController::class, 'softDeleteMinor'])->name('admin.softDeleteMinor');
     Route::post('/adminRstoreMinor/{id}', [AdminEmployeeMinorController::class, 'restoreMinor'])->name('admin.restoreMinor');
+    Route::get('/adminClientMinors/{id}/createMinor', [AdminEmployeeMinorController::class, 'createMinorsAdmin'])->name('admin.createMinorAdmin');
+    Route::post('/adminRstoreMinor/{id}/storeMinor', [AdminEmployeeMinorController::class, 'storeMinorAdmin'])->name('admin.storeMinorAdmin');
 });
