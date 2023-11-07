@@ -41,6 +41,85 @@ class UserSeeder extends Seeder
             'plan' => $faker->randomElement(['Bronce', 'Plata', 'Oro']),
         ]);
 
+        $us = User::create([
+            'DNI' => 42293176,
+            'firstName' => $faker->firstName,
+            'lastName' => $faker->lastName,
+            'birthDate' => $faker->date,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+            'state' => true,
+            'email' => "lucioadriell@ospifak.com",
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ])->assignRole('client'); 
+
+        Client::create([
+            'DNI' => 42293176,
+            'registration_date' => $faker->date,
+            'plan' => $faker->randomElement(['Bronce', 'Plata', 'Oro']),
+        ]);
+
+        $us = User::create([
+            'DNI' => 39483268,
+            'firstName' => $faker->firstName,
+            'lastName' => $faker->lastName,
+            'birthDate' => $faker->date,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+            'state' => true,
+            'email' => "juan@ospifak.com",
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ])->assignRole('client'); 
+
+        Client::create([
+            'DNI' => 39483268,
+            'registration_date' => $faker->date,
+            'plan' => $faker->randomElement(['Bronce', 'Plata', 'Oro']),
+        ]);
+
+        $us = User::create([
+            'DNI' => 42397893,
+            'firstName' => $faker->firstName,
+            'lastName' => $faker->lastName,
+            'birthDate' => $faker->date,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+            'state' => true,
+            'email' => "david@ospifak.com",
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ])->assignRole('client'); 
+
+        Client::create([
+            'DNI' => 42397893,
+            'registration_date' => $faker->date,
+            'plan' => $faker->randomElement(['Bronce', 'Plata', 'Oro']),
+        ]);
+
+        $us = User::create([
+            'DNI' => 12345678,
+            'firstName' => $faker->firstName,
+            'lastName' => $faker->lastName,
+            'birthDate' => $faker->date,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+            'state' => true,
+            'email' => "jorge@ospifak.com",
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ])->assignRole('client'); 
+
+        Client::create([
+            'DNI' => 12345678,
+            'registration_date' => $faker->date,
+            'plan' => $faker->randomElement(['Bronce', 'Plata', 'Oro']),
+        ]);
 
         //Employee
         $us = User::create([
@@ -78,6 +157,82 @@ class UserSeeder extends Seeder
 
         Employee::create([
             'DNI' => 44444444,
+            'registration_date'=> today()
+        ]);
+
+        $us = User::create([
+            'DNI' => 55555555,
+            'firstName' => $faker->firstName,
+            'lastName' => $faker->lastName,
+            'birthDate' => $faker->date,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+            'state' => true,
+            'email' => 'employee3@ospifak.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ])->assignRole('employee');
+
+        Employee::create([
+            'DNI' => 55555555,
+            'registration_date'=> today()
+        ]);
+
+        $us = User::create([
+            'DNI' => 9273456,
+            'firstName' => $faker->firstName,
+            'lastName' => $faker->lastName,
+            'birthDate' => $faker->date,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+            'state' => true,
+            'email' => 'employee4@ospifak.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ])->assignRole('employee');
+
+        Employee::create([
+            'DNI' => 9273456,
+            'registration_date'=> today()
+        ]);
+
+        $us = User::create([
+            'DNI' => 35678987,
+            'firstName' => $faker->firstName,
+            'lastName' => $faker->lastName,
+            'birthDate' => $faker->date,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+            'state' => true,
+            'email' => 'employee5@ospifak.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ])->assignRole('employee');
+
+        Employee::create([
+            'DNI' => 35678987,
+            'registration_date'=> today()
+        ]);
+
+        $us = User::create([
+            'DNI' => 98765432,
+            'firstName' => $faker->firstName,
+            'lastName' => $faker->lastName,
+            'birthDate' => $faker->date,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+            'state' => true,
+            'email' => 'employee9@ospifak.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ])->assignRole('employee');
+
+        Employee::create([
+            'DNI' => 98765432,
             'registration_date'=> today()
         ]);
 

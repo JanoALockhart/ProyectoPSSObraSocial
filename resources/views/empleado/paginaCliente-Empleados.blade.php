@@ -7,10 +7,10 @@
 
 
         <div>
-            <a href="{{ route('register') }}" class="w-64 bg-blue-500 hover:bg-blue-700 text-white p-3 m-2 rounded self-center">
+            <a href="{{ route('register') }}" class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 active:ring-2 active:ring-black">
                 Inscripción Cliente
             </a>
-            <input type="text" id="searchInput" placeholder="Buscar por DNI, Nombre o Plan" class="w-64 p-3 border border-gray-300 rounded">
+            <input type="text" id="searchInput" class="form-input w-64" placeholder="Buscar por DNI" pattern="[0-9]*" title="Ingrese solo números">
         </div>
         <div class="m-4 p-4 bg-white w-4/6">
             <div class="m-4 p-4 bg-white">
@@ -43,6 +43,7 @@
     </div>
 </x-app-layout>
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -51,14 +52,9 @@
 
         // Función para realizar la búsqueda y actualizar la lista
         function buscarClientes(termino) {
-            // Filtra los clientes por DNI, Nombre o Plan
+            // Filtra los clientes por DNI
             var resultados = clientes.filter(function (cliente) {
-                return (
-                    cliente.DNI.includes(termino) ||
-                    cliente.firstName.toLowerCase().includes(termino.toLowerCase()) ||
-                    cliente.lastName.toLowerCase().includes(termino.toLowerCase()) ||
-                    cliente.plan.toLowerCase().includes(termino.toLowerCase())
-                );
+                return cliente.DNI.includes(termino);
             });
 
             // Actualiza la lista de clientes con los resultados de la búsqueda
