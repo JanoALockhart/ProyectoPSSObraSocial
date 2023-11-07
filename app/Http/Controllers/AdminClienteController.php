@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Plan;
 use App\Models\User;
 
 class AdminClienteController extends Controller
@@ -25,7 +26,10 @@ class AdminClienteController extends Controller
     {
         $client = Client::where('DNI', $DNI)->first();
 
-        return view('admin.adminCliente.edit', compact('client'));
+        $clientPlan = $client->plan;
+        $plans = Plan::all();
+
+        return view('admin.adminCliente.edit', compact('client', 'plans', 'clientPlan'));
     }
 
     public function update(Request $request)
@@ -38,7 +42,8 @@ class AdminClienteController extends Controller
             'birthDate' => 'required|date',
             'phone' => 'required|string',
             'address' => 'required|string',
-            'DNI' => 'required|string',
+            'DNI' => 'required|numeric',
+            'plan' => 'required|string'
         ]);
 
         $client = Client::where('DNI', $request->query('DNI'))->firstOrFail();
@@ -50,12 +55,12 @@ class AdminClienteController extends Controller
             'lastName' => $request->input('lastName'),
             'birthDate' => $request->input('birthDate'),
             'phone' => $request->input('phone'),
-            'address' => $request->input('address'),
+            'address' => $request->input('address')
         ]);
 
         $client->update([
             'DNI' => $request->input('DNI'),
-            'plan' => $client->plan,
+            'plan' => $request->input('plan'),
             'registration_date' => $client->registration_date
         ]);
 

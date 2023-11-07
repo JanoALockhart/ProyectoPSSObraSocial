@@ -60,7 +60,23 @@
                                 <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                             </div>
 
-                            <!-- Agregar otros campos del cliente... -->
+                            <div>
+                                <x-input-label for="plan" :value="__('Plan')" />
+                                <select id="plan" name="plan" class="mt-1 block w-full" required>
+                                    @foreach ($plans as $plan)
+                                        <option value="{{ $plan->name }}" 
+                                            @if ($clientPlan !== null && (string) $clientPlan === (string) $plan->id)
+                                                selected
+                                            @endif
+                                            style="background-color: #f2f2f2; color: #333; font-weight: bold; border: 1px solid #ccc; padding: 5px;">
+                                            {{ $plan->name }}
+                                        </option>
+                                    @endforeach
+                                
+                                
+                                </select>
+                                <x-input-error class="mt-2" :messages="$errors->get('plan')" />
+                            </div>
                     
                     </div>
 
