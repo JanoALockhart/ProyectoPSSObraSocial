@@ -149,7 +149,6 @@ class RequestController extends Controller
                 $clientRequest->save();
                 return back()->with (['message' => 'Solicitud Desaprobado con éxito']);
             }
-            dd($state);
             
         }else
             return response()->json(['message' => 'Solicitud no encontrada'], 404);
@@ -157,13 +156,32 @@ class RequestController extends Controller
 
     public function viewRequest(string $id)
 {
+    $user = Auth::user();
+    $role = $user->getRoleNames()->first();
     $request = ModelsRequest::find($id);
     $vista=null;
-    if($request['type']=='Reintegro'){
-        $vista = view('empleado.solicitudReintegro', ['refundRequest' => $request]);
-    }else if($request['type']=='Prestacion'){
-        $vista = view('empleado.solicitudPrestaciones', ['benefitRequest' => $request]);
+    if ($role === "employee")
+    {
+        if($request['type']=='Reintegro')
+        {
+            $vista = view('empleado.solicitudReintegro', ['refundRequest' => $request]);
+        }
+        else if($request['type']=='Prestacion'){
+            $vista = view('empleado.solicitudPrestaciones', ['benefitRequest' => $request]);
+        }
     }
+    else
+    {
+        if($request['type']=='Reintegro')
+        {
+            $vista = view('admin.solicitudReintegro', ['refundRequest' => $request]);
+        }
+        else if($request['type']=='Prestacion'){
+            $vista = view('admin.solicitudPrestaciones', ['benefitRequest' => $request]);
+        }
+    }
+
+
     return $vista;
 }
     

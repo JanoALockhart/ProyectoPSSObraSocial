@@ -61,9 +61,6 @@
             </div>
             </a>
         </div>
-        <div class="">
-            <img class="max-h-[calc(9*2.5rem)]" src="https://via.placeholder.com/360x480">
-        </div>
 
     </div>
 

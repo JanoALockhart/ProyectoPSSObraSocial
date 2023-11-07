@@ -41,15 +41,13 @@ Route::middleware(['auth', 'checkIfAdmin'])->group(function () {
 
     Route::get('/admin/solicitudes', [RequestController::class, 'indexAllClientRequests'])
     ->name('admin.solicitudes');
-    Route::get('admin/solicitudReintegro', function(){
-        return view('admin.solicitudReintegro');
-    })->name('admin.solicitudReintegro');
-    Route::get('admin/solicitudPrestaciones', function(){
-        return view('admin.solicitudPrestaciones');
-    })->name('admin.solicitudPrestaciones');
+    Route::get('/admin_solicitudReintegro/{id}', [RequestController::class, 'viewRequest'])
+    ->name('admin.solicitudReintegro');
+    Route::get('/admin_solicitudPrestaciones/{id}', [RequestController::class, 'viewRequest'])
+    ->name('admin.solicitudPrestaciones');
 
     Route::post('/empleados/cambiarEstado/{empleado}', [AdminEmpleadoController::class, 'cambiarEstado'])->name('empleados.cambiarEstado');
-
+    Route::get('/admin_solicitudes/cambioEstado/{id}/{newState}', [RequestController::class, 'requestStateChange'])->name('admin.solicitudes.cambioEstado');
 
     Route::get('/adminClientMinors/{id}', [AdminEmployeeMinorController::class, 'listMinorsAdmin'])->name('admin.showClientMinors');
     Route::delete('/adminClientMinors/{id}', [AdminEmployeeMinorController::class, 'softDeleteMinor'])->name('admin.softDeleteMinor');
