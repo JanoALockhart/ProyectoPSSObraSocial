@@ -23,7 +23,7 @@
                                 Estado: {{ $request->state }}<br>
                                 Fecha: {{ $request->date }}<br>
                             </div>
-                            <a href="{{ route('empleado.solicitudReintegro') }}" class="custom-list-link">Ver</a>
+                            <a href="{{ route('empleado.solicitudReintegro',$request->id)}}" class="custom-list-link">Ver</a>
                         </li>
                     @endforeach
                 </ul>
@@ -41,7 +41,7 @@
                                 Estado: {{ $request->state }}<br>
                                 Fecha: {{ $request->date }}<br>
                             </div>
-                            <a href="{{ route('empleado.solicitudPrestaciones') }}" class="custom-list-link">Ver</a>
+                            <a href="{{ route('empleado.solicitudPrestaciones',$request->id)}}" class="custom-list-link">Ver</a>
                         </li>
                     @endforeach
                 </ul>

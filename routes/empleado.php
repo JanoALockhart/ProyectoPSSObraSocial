@@ -29,14 +29,17 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
 
     Route::get('/empleado_solicitudes', [RequestController::class, 'indexAllClientRequests'])
         ->name('empleado.solicitudes');
-    Route::get('/empleado_solicitudReintegro', function(){
-        return view('empleado.solicitudReintegro');
-    })->name('empleado.solicitudReintegro');
-    Route::get('/empleado_solicitudPrestaciones', function(){
-        return view('empleado.solicitudPrestaciones');
-    })->name('empleado.solicitudPrestaciones');
+    Route::get('/empleado_solicitudReintegro/{id}', [RequestController::class, 'viewRequest'])
+    ->name('empleado.solicitudReintegro');
+    Route::get('/empleado_solicitudPrestaciones/{id}', [RequestController::class, 'viewRequest'])
+    ->name('empleado.solicitudPrestaciones');
 
 
+    Route::get('/empleado_paginaCliente-Empleados', function(){
+        return view('empleado.paginaCliente-Empleados');
+    })->name('empleado.paginaCliente-Empleados');
+
+    Route::get('/empleado_solicitudes/cambioEstado/{id}/{newState}', [RequestController::class, 'requestStateChange'])->name('empleado.solicitudes.cambioEstado');
 
     Route::post('/empleado/registrar-cliente', [RegisteredUserController::class, 'store'])->name('register');
 
