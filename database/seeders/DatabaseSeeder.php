@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PlanSeeder::class);
         $this->call(RequestSeeder::class);
         $this->call(Minor18Seeder::class);
+        $this->call(RandomUsersSeeder::class);
     }
 }
