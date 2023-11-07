@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EmployeeController;
+use App\Models\Plan;
 
 Route::get('/empleado_paginaCliente-Empleados', [ClientController::class, 'index'])
     ->name('empleado.paginaCliente-Empleados');
@@ -40,7 +41,8 @@ Route::middleware(['auth', 'checkIfEmployee'])->group(function () {
     Route::post('/empleado/registrar-cliente', [RegisteredUserController::class, 'store'])->name('register');
 
     Route::get('/empleado/registrar-cliente', function(){
-        return view('auth.register');
+        $planes = Plan::with('prestations')->get(); // Obtener todos los planes
+        return view('auth.register', ['planes' => $planes]);
     });
 
 
