@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Models\Plan;
+use Illuminate\Validation\Rule;
 
 class RegisteredUserController extends Controller
 {
@@ -43,7 +44,15 @@ class RegisteredUserController extends Controller
             'birthDate' => ['required', 'date'],
             'phone' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'plan' => ['required', 'string'],
+            'plan' => [
+                'required',
+                'string',
+                Rule::in(
+                    Plan::where('min_age', '<=', now()->diffInYears($request->birthDate))
+                        ->where('max_age', '>=', now()->diffInYears($request->birthDate))
+                        ->pluck('name')->toArray()
+                ),
+            ],
         ]);
 
         $user = User::create([
